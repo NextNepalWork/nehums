@@ -32,6 +32,10 @@
                                     <label for="linkedin">LinkedIn</label>
                                     <input type="text" class="form-control" name="linkedin" value="{{old('linkedin',$social->linkedin)}}">
                                 </div>
+                                <div class="form-group">
+                                    <label for="Map">Google Map</label>
+                                    <textarea class="form-control" name="map">{{old('map',$social->map)}}</textarea>
+                                </div>
                             </div>
                             @can('role-create')
                             <div class="card-footer">

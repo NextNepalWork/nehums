@@ -63,6 +63,9 @@
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.0/sweetalert.min.js"></script>
 
+<script src="{{asset('assets/js/spartan-multi-image-picker-min.js')}}"></script>
+
+
 <script>
   @if(Session::has('message'))
   toastr.options =

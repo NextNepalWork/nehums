@@ -4,6 +4,9 @@ use App\Http\Controllers\BannerController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CkeditorController;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\MediaController;
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProgramController;
@@ -11,7 +14,9 @@ use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SocialSettingsController;
 use App\Http\Controllers\SiteSettingsController;
+use App\Http\Controllers\SliderController;
 use App\Http\Controllers\SocialController;
+use App\Http\Controllers\StepController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\UserController;
@@ -33,12 +38,14 @@ Route::get('/', function () {
 
 
 
-
+Route::get('/dashboard', function () {
+    return view('admin.dashboard');
+})->name('dashboard')->middleware('auth');
 Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
-    Route::get('/dashboard', function () {
-        return view('admin.dashboard');
-    })->name('dashboard');
+    // Route::get('/dashboard', function () {
+    //     return view('admin.dashboard');
+    // })->name('dashboard');
 
     Route::get('/social_settings', [SocialSettingsController::class, 'index'])->name('social');
     // Route::post('/social_settings', [SocialSettingsController::class, 'store'])->name('socialStore');
@@ -58,6 +65,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     
     Route::get('/blogs/update-status',[BlogController::class,'update_status'])->name('blog.update_status');
     Route::get('/banners/update-status',[BannerController::class,'update_status'])->name('banner.update_status');
+    Route::get('/sliders/update-status',[SliderController::class,'update_status'])->name('slider.update_status');
+
 
     
     
@@ -68,12 +77,14 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
     Route::resource('/testimonials', TestimonialController::class);
     Route::resource('/teams', TeamController::class);
-    Route::resource('/programs', ProgramController::class);
+    Route::resource('/events', EventController::class);
     Route::resource('/banners', BannerController::class);
-
-
-
-
+    Route::resource('/sliders', SliderController::class);
+    Route::resource('/steps', StepController::class);
+    Route::resource('/medias', MediaController::class);
+	Route::resource('/pages', PageController::class);
+    
+    
 });
 
 

@@ -71,7 +71,8 @@ class BlogController extends Controller
      */
     public function show($id)
     {
-        //
+        $blog=Blog::findOrFail($id);
+        return view('admin.blog.show',compact('blog'));
     }
 
     /**

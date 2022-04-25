@@ -68,7 +68,8 @@ class ProgramController extends Controller
      */
     public function show($id)
     {
-        //
+        $program=Program::findOrFail($id);
+        return view('admin.program.show',compact('program'));
     }
 
     /**
