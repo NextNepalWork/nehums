@@ -16,9 +16,13 @@ class SocialSettingsController extends Controller
     {
         $social = SocialSetting::findOrFail($id);
         $this->validateData($request);
-        $input = $request->all();
-        $social->update($input);
-        return redirect('/social_settings')->with('status','Settings has been updated successfully');
+        $social->facebook=$request->facebook;
+        $social->twitter=$request->twitter;
+        $social->instagram=$request->instagram;
+        $social->linkedin=$request->linkedin;
+        $social->map=$request->map;
+        $social->update();
+        return back()->with('message','Settings has been updated successfully');
     }
 
     // Validate Data

@@ -10,15 +10,15 @@
                         <div class="card-header">
                             <h3 class="card-title">Settings</h3>
                         </div>
+                        @include('admin.includes.message')
                         
                         <form method="post" action="{{route('settings.update',$setting->id)}}" enctype="multipart/form-data">
                             @csrf
                             <input type="hidden" name="_method" value="PATCH">
                             <div class="card-body">
-                                @include('admin.includes.message')
                                 <div class="row">
                                     <div class="form-group col-md-6">
-                                        <label for="Title">Title</label>
+                                        <label for="Title">Site Name</label>
                                         <input type="text" class="form-control" name="title" value="{{old('Title',$setting->title)}}">
                                     </div>
                                     <div class="form-group col-md-6">
@@ -54,9 +54,25 @@
                                         <img id="preview-favicon-before-upload"  style="max-height: 100px;">
                                     </div>
                                 </div>
-                                <label for="Footer">Footer</label>
-                                <div class="row px-3">
-                                    <textarea name="footer" class="ckeditor form-control">{{old('footer',$setting->footer)}}</textarea>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="account">Bank Account No.</label>
+                                        <input type="text" class="form-control" name="account_no" value="{{old('account_no',$setting->account_no)}}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Bank">Bank</label>
+                                        <input type="text" class="form-control" name="bank" value="{{old('bank',$setting->bank)}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
+                                        <label for="Location">Branch</label>
+                                        <input type="text" class="form-control" name="branch" value="{{old('branch',$setting->branch)}}">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="Footer">Footer Text</label>
+                                        <textarea name="footer" class="form-control">{{old('footer',$setting->footer)}}</textarea>
+                                    </div>
                                 </div>
                             </div>
                             @can('role-create')
@@ -74,12 +90,6 @@
 </div>
 @endsection
 @section('scripts')
-<script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-       $('.ckeditor').ckeditor();
-    });
-</script>
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
             

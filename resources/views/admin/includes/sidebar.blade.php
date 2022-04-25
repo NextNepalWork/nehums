@@ -200,6 +200,16 @@
             </ul>
           </li> --}}
           <li class="nav-item">
+            <a href="{{route('sliders.index')}}" class="nav-link {{ Route::is('sliders.index','sliders.create','sliders.edit') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Sliders
+                {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
             <a href="{{route('banners.index')}}" class="nav-link {{ Route::is('banners.index','banners.create','banners.edit') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tree"></i>
               <p>
@@ -208,9 +218,18 @@
               </p>
             </a>
           </li>
+          <li class="nav-item">
+            <a href="{{route('steps.index')}}" class="nav-link {{ Route::is('steps.index','steps.create','steps.edit') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Steps
+                {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit') ? 'active' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Blog
@@ -254,10 +273,38 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{route('programs.index')}}" class="nav-link {{ Route::is('programs.index','programs.create','programs.edit') ? 'active' : '' }}">
+            <a href="{{route('events.index')}}" class="nav-link {{ Route::is('events.index','events.create','events.edit','events.show') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tree"></i>
               <p>
-                Programs
+                Events
+                {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('medias.index')}}" class="nav-link {{ Route::is('medias.index','medias.create','medias.edit','medias.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Media Coverage
+                {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('medias.index')}}" class="nav-link {{ Route::is('medias.index','medias.create','medias.edit','medias.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Gallery
+                {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('pages.index')}}" class="nav-link {{ Route::is('pages.index','pages.create','pages.edit','pages.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-tree"></i>
+              <p>
+                Custom Pages
                 {{-- <i class="fas fa-angle-right right"></i> --}}
               </p>
             </a>

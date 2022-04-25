@@ -73,6 +73,8 @@ class SiteSettingsController extends Controller
     {
 
         $setting = SiteSetting::find(1);
+        $this->validateData($request);
+
 
         $logo = $setting->logo;
         $favicon = $setting->favicon;
@@ -103,10 +105,14 @@ class SiteSettingsController extends Controller
         $setting->contact = $request['contact'];
         $setting->email = $request['email'];
         $setting->footer = $request['footer'];
+        $setting->bank = $request['bank'];
+        $setting->account_no = $request['account_no'];
+        $setting->branch = $request['branch'];
+
 
         $setting->update();
 
-        return redirect('/settings')->with('status', 'Settings has been updated successfully');
+        return back()->with('message', 'Settings has been updated successfully');
     }
 
     private $destination = "admin/image/";

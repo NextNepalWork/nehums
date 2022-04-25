@@ -1,5 +1,5 @@
 @extends('admin.includes.main')
-@section('title')Edit Program -  {{ config('app.name', 'Laravel') }} @endsection
+@section('title')Edit page -  {{ config('app.name', 'Laravel') }} @endsection
 @section('content')
 
     <section class="content">
@@ -8,63 +8,59 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Program</h3>
-                            <a href="{{route('programs.index')}}" class="btn btn-success btn-sm float-right">View Program</a>
+                            <h3 class="card-title">Edit page</h3>
+                            <a href="{{route('pages.index')}}" class="btn btn-success btn-sm float-right">View page</a>
                         </div>
                         <div class="card-body">
-                            <form action="{{route('programs.update',$program->id)}}" method="post" enctype="multipart/form-data">
+                            <form action="{{route('pages.update',$page->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
-
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name">Title</label> <span class="text-danger"> * </span>
-                                            <input type="text" class="form-control" name="title" value="{{old('title',$program->title)}}" required>
+                                            <input type="text" class="form-control" name="title" value="{{old('title',$page->title)}}" required>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="name">Location</label>
-                                            <input type="text" class="form-control" name="location" value="{{old('location',$program->location)}}">
-                                        </div>
-                                    </div>
-                                </div> 
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="name">Date</label>
-                                            <input type="date" class="form-control" name="date" value="{{old('date',$program->date)}}" required>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="name">Thumbnail Image</label><br>
-                                            <input type="file" name="thumbnail_img" id="thumb_image"><br>
-                                            <img id="preview-thumb-image-before-upload"  style="max-height:150px;" src="{{asset('uploads/programs/'.$program->thumbnail_img)}}">
+                                            <label for="name">Slug</label>
+                                            <input type="text" class="form-control" name="slug" value="{{old('slug',$page->slug)}}">
                                         </div>
                                     </div>
                                 </div> 
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label>Descriptions</label>
-                                            <textarea class="form-control" name="description">{{old('description',$program->description)}}</textarea>
+                                            <label for="name">Content</label><br>
+                                            <textarea name="content">{{old('content',$page->content)}}</textarea>
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label>Meta Title</label>
+                                            <input type="text" class="form-control" value="{{old('meta_title',$page->meta_title)}}" name="meta_title">
                                         </div>
                                     </div>
 
                                 </div> 
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="image">Image</label><br>
-                                            <input type="file" name="image" id="image">
+                                            <label>Meta Description</label><br>
+                                            <textarea name="meta_description" class="form-control">{{old('meta_description',$page->meta_description)}}</textarea>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <img id="preview-image-before-upload"  style="max-height:150px;" src="{{asset('uploads/programs/'.$program->image)}}">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="image">Meta Image</label><br>
+                                            <input type="file" name="meta_image" id="thumb_image"><br>
+                                            <img id="preview-thumb-image-before-upload"  style="max-height:150px;" src="{{asset('uploads/custom-pages/'.$page->meta_image)}}">
+                                        </div>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-success btn-sm float-right">Save</button> 
@@ -77,7 +73,7 @@
     </section>
 </div>
 <script type="text/javascript">
-    CKEDITOR.replace('description', {
+    CKEDITOR.replace('content', {
         filebrowserUploadUrl: "{{route('ckeditor.upload', ['_token' => csrf_token() ])}}",
         filebrowserUploadMethod: 'form'
     });
@@ -89,31 +85,37 @@
             
     $(document).ready(function (e) {
     
-    
-    $('#image').change(function(){
+
+    $('#thumb_image').change(function(){
                 
         let reader = new FileReader();
     
         reader.onload = (e) => { 
     
-        $('#preview-image-before-upload').attr('src', e.target.result); 
+        $('#preview-thumb-image-before-upload').attr('src', e.target.result); 
         }
     
         reader.readAsDataURL(this.files[0]); 
-    
+            
     });
-    $('#thumb_image').change(function(){
-                
-                let reader = new FileReader();
-            
-                reader.onload = (e) => { 
-            
-                $('#preview-thumb-image-before-upload').attr('src', e.target.result); 
-                }
-            
-                reader.readAsDataURL(this.files[0]); 
-            
-            });
+
+    $("#photos").spartanMultiImagePicker({
+			fieldName:        'image[]',
+			maxCount:         10,
+			rowHeight:        '200px',
+			groupClassName:   'col-md-4 col-sm-4 col-xs-6',
+			maxFileSize:      '',
+			dropFileLabel : "Drop Here",
+			onExtensionErr : function(index, file){
+				console.log(index, file,  'extension err');
+				alert('Please only input png or jpg type file')
+			},
+			onSizeErr : function(index, file){
+				console.log(index, file,  'file size too big');
+				alert('File size too big');
+			}
+	});
+
     
     });
     

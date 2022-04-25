@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Banner;
+use App\Models\Slider;
 use Illuminate\Http\Request;
 
-class BannerController extends Controller
+class SliderController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +14,8 @@ class BannerController extends Controller
      */
     public function index()
     {
-        $banners = Banner::all();
-        return view('admin.banner.index',compact('banners'));
+        $sliders=Slider::all();
+        return view('admin.slider.index',compact('sliders'));
     }
 
     /**
@@ -25,7 +25,7 @@ class BannerController extends Controller
      */
     public function create()
     {
-        return view('admin.banner.create');
+        return view('admin.slider.create');
     }
 
     /**
@@ -36,18 +36,19 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-        $banner = new Banner();
-        $banner->url=$request->url;
-        $banner->status=$request->status;
+        $slider = new Slider();
+        $slider->link=$request->link;
+        $slider->status=$request->status;
+        $slider->title=$request->title;
         if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();  
      
-            $request->image->move(public_path('uploads/banners/'), $imageName);
-            $banner->image= $imageName;
+            $request->image->move(public_path('uploads/sliders/'), $imageName);
+            $slider->image= $imageName;
         }
 
-        $banner->save();
-        return redirect()->route('banners.index')->with('message','Banner added successfully');
+        $slider->save();
+        return redirect()->route('sliders.index')->with('message','Slider added successfully');
     }
 
     /**
@@ -69,8 +70,8 @@ class BannerController extends Controller
      */
     public function edit($id)
     {
-        $banner = Banner::findOrFail($id);
-        return view('admin.banner.edit',compact('banner'));
+        $slider = Slider::findOrFail($id);
+        return view('admin.slider.edit',compact('slider'));
     }
 
     /**
@@ -82,26 +83,28 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $banner = Banner::findOrFail($id);
-        $banner->url=$request->url;
-        $banner->status=$request->status;
+        $slider = Slider::findOrFail($id);
+        $slider->link=$request->link;
+        $slider->status=$request->status;
+        $slider->title=$request->title;
+
 
         if ($image = $request->file('image')) {
-            $image_path = public_path('uploads/banners/' . $banner->image);
+            $image_path = public_path('uploads/sliders/' . $slider->image);
             
             if(file_exists($image_path)){
                 unlink($image_path);
             }
-                $destinationPath = 'uploads/banners/';
+                $destinationPath = 'uploads/sliders/';
                 $profileImage = date('YmdHis') . "." .$image->getClientOriginalName();
                 $image->move($destinationPath, $profileImage);
-                $banner->image = "$profileImage";
+                $slider->image = "$profileImage";
             
         }else{
-            unset($banner->image);
+            unset($slider->image);
         }
-        $banner->save();
-        return redirect()->route('banners.index')->with('message','Banner updated successfully');
+        $slider->save();
+        return redirect()->route('sliders.index')->with('message','Slider updated successfully');
     }
 
     /**
@@ -112,24 +115,24 @@ class BannerController extends Controller
      */
     public function destroy($id)
     {
-        $banner=Banner::findOrFail($id);
-        $image_path = public_path('uploads/banners/' . $banner->image);    
+        $sliders=Slider::findOrFail($id);
+        $image_path = public_path('uploads/sliderss/' . $sliders->image);    
             if(file_exists($image_path)){
                 unlink($image_path);
             }else{
                 
             }
-        $banner->delete();
-        return back()->with('message','Banner deleted successfully');
+        $sliders->delete();
+        return back()->with('message','Slider deleted successfully');
     }
 
     public function update_status(Request $request)
     {
-        $banner = Banner::findOrFail($request->id);
+        $slider = Slider::findOrFail($request->id);
         
-        $banner->status = $request->status;
+        $slider->status = $request->status;
         
-        $banner->save();
+        $slider->save();
     
         return response()->json(['message' => 'Status updated successfully.']);
     }
