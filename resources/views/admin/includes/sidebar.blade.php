@@ -1,9 +1,13 @@
+  @php
+      $setting = \App\Models\SiteSetting::first();
+  @endphp
+  
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
-    <a href="index3.html" class="brand-link">
-      <img src="{{asset('assets/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">AdminLTE 3</span>
+    <a href="{{route('dashboard')}}" class="brand-link">
+      <img src="{{asset('admin/image/'.$setting->logo)}}" alt="{{$setting->title}}" class="brand-image img-circle elevation-3" style="opacity: .8">
+      <span class="brand-text font-weight-light">{{$setting->title}}</span>
     </a>
 
     <!-- Sidebar -->
@@ -230,7 +234,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
+            <a href="{{route('blogs.index')}}" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Programs
@@ -316,6 +320,23 @@
               <p>
                 Newsletter
                 {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('messages.index')}}" class="nav-link {{ Route::is('messages.index','messages.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Messages
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('opportunity.index')}}" class="nav-link {{ Route::is('opportunity.index','opportunity.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Opportunity
               </p>
             </a>
           </li>
