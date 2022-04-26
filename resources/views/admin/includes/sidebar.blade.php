@@ -201,7 +201,8 @@
           </li> --}}
           <li class="nav-item">
             <a href="{{route('sliders.index')}}" class="nav-link {{ Route::is('sliders.index','sliders.create','sliders.edit') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tree"></i>
+              {{-- <i class="nav-icon fa-solid fa-images"></i> --}}
+              <i class="nav-icon fas fa-copy"></i>
               <p>
                 Sliders
                 {{-- <i class="fas fa-angle-right right"></i> --}}
@@ -211,7 +212,7 @@
 
           <li class="nav-item">
             <a href="{{route('banners.index')}}" class="nav-link {{ Route::is('banners.index','banners.create','banners.edit') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon far fa-image"></i>
               <p>
                 Banner
                 {{-- <i class="fas fa-angle-right right"></i> --}}
@@ -230,13 +231,13 @@
 
           <li class="nav-item">
             <a href="#" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-users"></i>
+              <i class="nav-icon fas fa-edit"></i>
               <p>
-                Blog
-                <i class="fas fa-angle-right right"></i>
+                Programs
+                {{-- <i class="fas fa-angle-right right"></i> --}}
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            {{-- <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="{{route('blogs.index')}}" class="nav-link {{Route::is('blogs.index') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
@@ -249,7 +250,7 @@
                   <p>Add Blog</p>
                 </a>
               </li>
-            </ul>
+            </ul> --}}
           </li>
           
           <li class="nav-item">
@@ -264,7 +265,7 @@
 
           <li class="nav-item">
             <a href="{{route('teams.index')}}" class="nav-link {{ Route::is('teams.index','teams.create','teams.edit') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-users"></i>
               <p>
                 Teams
                 {{-- <i class="fas fa-angle-right right"></i> --}}
@@ -291,8 +292,8 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('medias.index')}}" class="nav-link {{ Route::is('medias.index','medias.create','medias.edit','medias.show') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tree"></i>
+            <a href="{{route('gallery.index')}}" class="nav-link {{ Route::is('gallery.index','gallery.create','gallery.edit','gallery.show') ? 'active' : '' }}">
+              <i class="nav-icon far fa-image"></i>
               <p>
                 Gallery
                 {{-- <i class="fas fa-angle-right right"></i> --}}
@@ -302,9 +303,18 @@
 
           <li class="nav-item">
             <a href="{{route('pages.index')}}" class="nav-link {{ Route::is('pages.index','pages.create','pages.edit','pages.show') ? 'active' : '' }}">
-              <i class="nav-icon fas fa-tree"></i>
+              <i class="nav-icon fas fa-book"></i>
               <p>
                 Custom Pages
+                {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('newsletters.index')}}" class="nav-link {{ Route::is('newsletters.index','newsletters.send') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Newsletter
                 {{-- <i class="fas fa-angle-right right"></i> --}}
               </p>
             </a>

@@ -66,6 +66,9 @@
 <script src="{{asset('assets/js/spartan-multi-image-picker-min.js')}}"></script>
 
 
+
+
+
 <script>
   @if(Session::has('message'))
   toastr.options =
