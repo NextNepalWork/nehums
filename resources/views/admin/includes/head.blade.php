@@ -21,6 +21,11 @@
   <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
 
   <link rel="stylesheet" href="{{asset('assets/css/custom.css')}}">
+  
+  
+  <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+  
+  <link rel="stylesheet" href="{{asset('assets/css/bootstrap-select.min.css')}}">
 
   <!-- overlayScrollbars -->
   <link rel="stylesheet" href="{{asset('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css')}}">
@@ -46,7 +51,9 @@
 
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
  <script src="https://cdn.ckeditor.com/4.12.1/standard/ckeditor.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+<script src="{{asset('assets/js/bootstrap-select.min.js')}}"></script>
   
   <style>
     .cke_chrome {

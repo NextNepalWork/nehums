@@ -34,25 +34,24 @@
                                         @csrf
                                         @method('delete')
                                         <td class="project-actions">
-                                            <a class="btn btn-primary btn-sm" href="{{route('pages.show',$page->id)}}">
+                                            {{-- <a class="btn btn-primary btn-sm" href="{{route('pages.show',$page->id)}}">
                                                 <i class="fas fa-folder">
                                                 </i>
                                                 View
-                                            </a>
-                                            @can('role-edit')
+                                            </a> --}}
                                             <a class="btn btn-info btn-sm" href="{{route('pages.edit',$page->slug)}}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit
                                             </a>
-                                            @endcan
-                                            @can('role-delete')
+                                            @if ($page->slug != 'about-us')
                                             <button class="btn btn-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title='Delete'>
                                                 <i class="fas fa-trash">
                                                 </i>
                                                 Delete
                                             </button>
-                                            @endcan
+                                            @endif
+                                            
                                         </td>
                                     </form>
 

@@ -5,9 +5,12 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\NewsletterController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\PhotoController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProgramController;
 use App\Http\Controllers\RoleController;
@@ -83,6 +86,19 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::resource('/steps', StepController::class);
     Route::resource('/medias', MediaController::class);
 	Route::resource('/pages', PageController::class);
+	Route::resource('/gallery', GalleryController::class);
+    Route::post('/gallery/photo',[GalleryController::class,'upload_photo'])->name('upload_photo');
+    Route::post('/gallery/video',[GalleryController::class,'upload_video'])->name('upload_video');
+    Route::delete('/photo/destroy/{id}', [GalleryController::class,'delete_photo'])->name('delete.photo');
+    Route::delete('/video/destroy/{id}', [GalleryController::class,'delete_video'])->name('delete.video');
+
+    Route::get('/newsletter', [NewsletterController::class,'index'])->name('newsletters.index');
+	Route::post('/newsletter/send', [NewsletterController::class,'send'])->name('newsletters.send');
+
+
+
+
+
     
     
 });
