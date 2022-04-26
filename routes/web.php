@@ -5,6 +5,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\frontend\FrontendController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaController;
 use App\Http\Controllers\MessageController;
@@ -36,11 +37,6 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 
 Route::get('/dashboard', function () {
@@ -112,3 +108,6 @@ Route::get('/auth/github/callback',[SocialController::class,'callback']);
 // Route::get('auth/facebook', [FacebookSocialiteController::class, 'redirectToFB']);
 // Route::get('callback/facebook', [FacebookSocialiteController::class, 'handleCallback']);
 require __DIR__ . '/auth.php';
+
+
+Route::get('/',[FrontendController::class,'index'])->name('home');
