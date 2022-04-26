@@ -7,7 +7,9 @@ use App\Http\Controllers\CkeditorController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\MediaController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\NewsletterController;
+use App\Http\Controllers\OpportunityController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PhotoController;
@@ -95,11 +97,11 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/newsletter', [NewsletterController::class,'index'])->name('newsletters.index');
 	Route::post('/newsletter/send', [NewsletterController::class,'send'])->name('newsletters.send');
 
+    Route::get('/message', [MessageController::class,'index'])->name('messages.index');
+	Route::get('/message/{id}', [MessageController::class,'show'])->name('messages.show');
+	Route::delete('/message/{id}', [MessageController::class,'delete'])->name('messages.destroy'); 
+	Route::resource('/opportunity', OpportunityController::class);
 
-
-
-
-    
     
 });
 

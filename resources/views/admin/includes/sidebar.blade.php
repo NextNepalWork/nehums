@@ -230,7 +230,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="#" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
+            <a href="{{route('blogs.index')}}" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Programs
@@ -316,6 +316,23 @@
               <p>
                 Newsletter
                 {{-- <i class="fas fa-angle-right right"></i> --}}
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('messages.index')}}" class="nav-link {{ Route::is('messages.index','messages.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Messages
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item">
+            <a href="{{route('opportunity.index')}}" class="nav-link {{ Route::is('opportunity.index','opportunity.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Opportunity
               </p>
             </a>
           </li>
