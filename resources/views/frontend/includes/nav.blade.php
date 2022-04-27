@@ -38,7 +38,7 @@
                     <a class="nav-link active" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="about-us.html">About Us</a>
+                    <a class="nav-link" href="{{route('about')}}">About Us</a>
                 </li>
                 <li class="nav-item mx-3">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -47,8 +47,8 @@
                         </span>
                     </a>
                     <div class="dropdown-menu position-absolute p-0 border-0">
-                        <a class="dropdown-item" href="programs.html">Programs</a>
-                        <a class="dropdown-item" href="events.html">Events</a>
+                        <a class="dropdown-item" href="{{route('programs')}}">Programs</a>
+                        <a class="dropdown-item" href="{{route('events')}}">Events</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">
@@ -58,12 +58,12 @@
                         </span>
                     </a>
                     <div class="dropdown-menu position-absolute p-0 border-0">
-                        <a class="dropdown-item" href="video-gallery.html">Video Gallery</a>
-                        <a class="dropdown-item" href="photo-gallery.html">Photo Gallery</a>
+                        <a class="dropdown-item" href="{{route('videos')}}">Video Gallery</a>
+                        <a class="dropdown-item" href="{{route('photos')}}">Photo Gallery</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="our-team.html">Our Team</a>
+                    <a class="nav-link" href="{{route('teams')}}">Our Team</a>
                 </li>
                 <li class="nav-item mx-3">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
@@ -78,7 +78,7 @@
                     </div>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="contact-us.html">Contact Us</a>
+                    <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
                 </li>
                 <!-- Popup Search Modal Anchor -->
                 <!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">

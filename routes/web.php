@@ -65,6 +65,8 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/categories/update-feature',[CategoryController::class,'update_feature'])->name('category.update_feature');
     
     Route::get('/blogs/update-status',[BlogController::class,'update_status'])->name('blog.update_status');
+    Route::get('/programs/update-status',[ProgramController::class,'update_status'])->name('program.update_status');
+
     Route::get('/banners/update-status',[BannerController::class,'update_status'])->name('banner.update_status');
     Route::get('/sliders/update-status',[SliderController::class,'update_status'])->name('slider.update_status');
 
@@ -93,11 +95,12 @@ Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
     Route::get('/newsletter', [NewsletterController::class,'index'])->name('newsletters.index');
 	Route::post('/newsletter/send', [NewsletterController::class,'send'])->name('newsletters.send');
 
+
     Route::get('/message', [MessageController::class,'index'])->name('messages.index');
 	Route::get('/message/{id}', [MessageController::class,'show'])->name('messages.show');
 	Route::delete('/message/{id}', [MessageController::class,'delete'])->name('messages.destroy'); 
 	Route::resource('/opportunity', OpportunityController::class);
-
+	Route::resource('/programs', ProgramController::class);
     
 });
 
@@ -111,3 +114,19 @@ require __DIR__ . '/auth.php';
 
 
 Route::get('/',[FrontendController::class,'index'])->name('home');
+Route::get('/about',[FrontendController::class,'about'])->name('about');
+Route::get('/programs',[FrontendController::class,'program'])->name('programs');
+Route::get('/events',[FrontendController::class,'events'])->name('events');
+Route::get('/events/{id}',[FrontendController::class,'event_detail'])->name('event.detail');
+Route::get('/programs/{id}',[FrontendController::class,'program_detail'])->name('program.detail');
+Route::get('/videos',[FrontendController::class,'video_gallery'])->name('videos');
+Route::get('/photos',[FrontendController::class,'photo_gallery'])->name('photos');
+Route::get('/teams',[FrontendController::class,'teams'])->name('teams');
+Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
+
+
+
+
+
+
+Route::post('/subscribers', [NewsletterController::class,'subscriber'])->name('subscriber');

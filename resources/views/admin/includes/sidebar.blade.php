@@ -234,7 +234,7 @@
           </li>
 
           <li class="nav-item">
-            <a href="{{route('blogs.index')}}" class="nav-link {{ Route::is('blogs.index','blogs.create','blogs.edit','blogs.show') ? 'active' : '' }}">
+            <a href="{{route('programs.index')}}" class="nav-link {{ Route::is('programs.index','programs.create','programs.edit','programs.show') ? 'active' : '' }}">
               <i class="nav-icon fas fa-edit"></i>
               <p>
                 Programs

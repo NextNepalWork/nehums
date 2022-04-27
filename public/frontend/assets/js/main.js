@@ -1,4 +1,4 @@
-// loader 
+// loader
 // $(document).ready(function(){
 // 	$('div#loading').removeAttr('id');
 // });
@@ -7,8 +7,8 @@ var preloader = document.getElementById("loading");
 // 	preloader.style.display = 'none';
 // 	})
 function myFunction() {
-    preloader.style.display = 'none';
-};
+    preloader.style.display = "none";
+}
 // Navigation Js Scroll Starts
 $(window).scroll(function () {
     var scroll = $(window).scrollTop();
@@ -19,9 +19,8 @@ $(window).scroll(function () {
     }
 }); // Navigation Js Scroll Ends
 
-
 // Banner Slick Slider Starts
-$('.slick-slider').slick({
+$(".slick-slider").slick({
     infinite: true,
     slidesToShow: 1,
     slidesToScroll: 1,
@@ -36,7 +35,7 @@ $('.slick-slider').slick({
 // Lightbox Gallery
 $(document).ready(() => {
     $("#lightgallery").lightGallery({
-        pager: true
+        pager: true,
     });
 });
 

@@ -14,7 +14,7 @@ class ProgramController extends Controller
      */
     public function index()
     {
-        $programs=Program::all();
+        $programs = Program::all();
         return view('admin.program.index',compact('programs'));
     }
 
@@ -36,28 +36,31 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $program = new Program();
+        $validated = $request->validate([
+            'title' => 'required',
+            'slug'=>'required|unique:programs,slug,',
+        ]);
+
+        $program=new Program();
         $program->title=$request->title;
+        $program->slug=$request->slug;
         $program->description=$request->description;
-        $program->date=$request->date;
-        $program->location=$request->location;
+        $program->status=$request->status;
+        
 
-
-        if ($request->hasFile('thumbnail_img')) {
-            $imageName = time().'.'.$request->thumbnail_img->extension();  
-     
-            $request->thumbnail_img->move(public_path('uploads/programs/'), $imageName);
-            $program->thumbnail_img= $imageName;
-        }
         if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();  
      
             $request->image->move(public_path('uploads/programs/'), $imageName);
             $program->image= $imageName;
+            // $program->image = $request->image->store('uploads/programs');
         }
 
-        $program->save();
-        return redirect()->route('programs.index')->with('message','Program added successfully');
+        if($program->save()){
+            return redirect()->route('programs.index')->with('message','program added successfully');
+        }
+        
+
     }
 
     /**
@@ -80,6 +83,7 @@ class ProgramController extends Controller
      */
     public function edit($id)
     {
+
         $program=Program::findOrFail($id);
         return view('admin.program.edit',compact('program'));
     }
@@ -93,11 +97,17 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $validated = $request->validate([
+            'title' => 'required',
+            'slug'=>'required|unique:programs,slug,'.$id,
+        ]);
+
         $program = Program::findOrFail($id);
         $program->title=$request->title;
+        $program->slug=$request->slug;
         $program->description=$request->description;
-        $program->date=$request->date;
-        $program->location=$request->location;
+        $program->status=$request->status;
+
         if ($image = $request->file('image')) {
             $image_path = public_path('uploads/programs/' . $program->image);
             
@@ -105,31 +115,17 @@ class ProgramController extends Controller
                 unlink($image_path);
             }
                 $destinationPath = 'uploads/programs/';
-                $profileImage = time() . "." .$image->extension();
+                $profileImage = date('YmdHis') . "." .$image->getClientOriginalName();
                 $image->move($destinationPath, $profileImage);
                 $program->image = "$profileImage";
             
         }else{
             unset($program->image);
         }
-
-        if ($thumbnail_img = $request->file('thumbnail_img')) {
-            $thumb_image_path = public_path('uploads/programs/' . $program->thumbnail_img);
-            
-            if(file_exists($thumb_image_path)){
-                unlink($thumb_image_path);
-            }
-                $destination = 'uploads/programs/';
-                $thumb_img = time() . "." .$thumbnail_img->extension();
-                $thumbnail_img->move($destination, $thumb_img);
-                $program->thumbnail_img = "$thumb_img";
-            
-        }else{
-            unset($program->thumbnail_img);
-        }
-
         $program->save();
-        return redirect()->route('programs.index')->with('message','Program updated successfully');   
+        return redirect()->route('programs.index')->with('message','program updated successfully');
+        
+        
     }
 
     /**
@@ -148,6 +144,17 @@ class ProgramController extends Controller
                 
             }
         $program->delete();
-        return back()->with('message','Program deleted successfully');
+        return back()->with('message','program deleted successfully');
+    }
+
+    public function update_status(Request $request)
+    {
+        $program = Program::findOrFail($request->id);
+        
+        $program->status = $request->status;
+        
+        $program->save();
+    
+        return response()->json(['message' => 'Status updated successfully.']);
     }
 }
