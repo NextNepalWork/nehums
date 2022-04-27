@@ -31,6 +31,8 @@
     <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
     <!-- Custom Links Ends -->
+    <link rel="stylesheet" type="text/css" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
 
 <body onload="myFunction()">
@@ -41,7 +43,6 @@
         @include('frontend.includes.nav')
 
         @yield('content')
-    
         @include('frontend.includes.footer')
     
         {{-- @include('frontend.partials.modal') --}}
@@ -56,6 +57,8 @@
 <!-- 1st Jquery Link Starts-->
 <script src="{{asset('frontend/assets/jquery-3.5.1/jquery-3.5.1.js')}}"></script>
 <!-- Jquery Link Ends-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+
 <!-- 2nd Popper Js Starts -->
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
     integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
@@ -77,6 +80,45 @@
 <!-- Custom Js  -->
 <script src="{{asset('frontend/assets/js/main.js')}}"></script>
 <!-- Custom Js Ends -->
+
+<script>
+    @if(Session::has('message'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.success("{{ session('message') }}");
+    @endif
+  
+    @if(Session::has('error'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.error("{{ session('error') }}");
+    @endif
+  
+    @if(Session::has('info'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.info("{{ session('info') }}");
+    @endif
+  
+    @if(Session::has('warning'))
+    toastr.options =
+    {
+        "closeButton" : true,
+        "progressBar" : true
+    }
+            toastr.warning("{{ session('warning') }}");
+    @endif
+  </script>
+  
 <!-- Mobile Nav -->
 <div class="modal fade" id="rightsidebarfilter" tabindex="-1" role="dialog"
     aria-labelledby="rightsidebarfilterlabel" aria-hidden="true">

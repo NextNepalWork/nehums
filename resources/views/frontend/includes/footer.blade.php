@@ -4,12 +4,12 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-12 my-2">
                         <div class="image">
-                            <a href="index.html" class=""> <img src="frontend/assets/images/logo/3.png"
-                                    alt="footer-logo-image" class="img-fluid"></a>
+                            <a href="index.html" class=""> <img src="{{'admin/image/'.$setting->logo}}"
+                                    alt="{{$setting->title}}" class="img-fluid"></a>
                         </div>
                         <div class="content mt-3">
                             <p class="font-weight-normal m-0">
-                                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sequi, quia accusantium.
+                               {{$setting->footer}}
                             </p>
                         </div>
                     </div>
@@ -47,18 +47,18 @@
                                 </div>
                             </div>
                             <li>
-                                <a href=" mailto:webmaster@example.com"><span class="mr-2"><i
+                                <a href=" mailto:{{$setting->email}}"><span class="mr-2"><i
                                             class="fa fa-envelope-square"
-                                            aria-hidden="true"></i></span>example@gmail.com</a>
+                                            aria-hidden="true"></i></span>{{$setting->email}}</a>
                                 </h5>
                             </li>
                             <li>
-                                <a href="tel:+4733378901"><span class="mr-2"><i class="fa fa-phone"
-                                            aria-hidden="true"></i></span>01-123456789</a></h5>
+                                <a href="tel:{{$setting->contact}}"><span class="mr-2"><i class="fa fa-phone"
+                                            aria-hidden="true"></i></span>{{$setting->contact}}</a></h5>
                             </li>
                             <li>
-                                <a href=""><span class="mr-2"><i class="fa fa-map"
-                                            aria-hidden="true"></i></span>Kathmandu, Nepal</a></h5>
+                                <a href="#"><span class="mr-2"><i class="fa fa-map"
+                                            aria-hidden="true"></i></span>{{$setting->address}}</a></h5>
                             </li>
                         </ul>
                     </div>

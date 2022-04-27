@@ -58,4 +58,16 @@ class NewsletterController extends Controller
 
     	return redirect()->route('dashboard')->with('message','Newsletter has been send');
     }
+
+    public function subscriber(Request $request){
+        $user=Subscriber::where('email',$request->email)->first();
+        if($user){
+            return back()->with('error','Already Subscribed');
+        }else{
+            $subscriber = new Subscriber();
+            $subscriber->email = $request->email;
+            $subscriber->save();
+            return back()->with('message','Subscribed Successfully');
+        }
+    }
 }
