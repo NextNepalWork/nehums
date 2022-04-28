@@ -37,6 +37,10 @@ class TeamController extends Controller
     public function store(Request $request)
     {
         $team = new Team();
+        $request->validate([
+            'name' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg,gif',
+        ]);
         $team->name=$request->name;
         $team->designation=$request->designation;
         $team->details=$request->details;
@@ -85,6 +89,10 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         $team = Team::findOrFail($id);
+        $request->validate([
+            'name' => 'required',
+            'image' => 'nullable|mimes:jpg,png,jpeg,gif',
+        ]);
         $team->name=$request->name;
         $team->designation=$request->designation;
         $team->details=$request->details;

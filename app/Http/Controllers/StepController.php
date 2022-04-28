@@ -37,6 +37,10 @@ class StepController extends Controller
     public function store(Request $request)
     {
         $step = new Step();
+        $request->validate([
+            'title' => 'required',
+            'text' => 'required|max:255'
+        ]);
         $step->title=$request->title;
         $step->text=$request->text;
         $step->icon=$request->icon;
@@ -78,6 +82,10 @@ class StepController extends Controller
     public function update(Request $request, $id)
     {
         $step = Step::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'text' => 'required|max:255'
+        ]);
         $step->title=$request->title;
         $step->text=$request->text;
         $step->icon=$request->icon;

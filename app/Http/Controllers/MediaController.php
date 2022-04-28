@@ -38,6 +38,10 @@ class MediaController extends Controller
     public function store(Request $request)
     {
         $media = new Media();
+        $request->validate([
+            'title' => 'required',
+            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
         $media->title=$request->title;
         $media->description=$request->description;
         $media->date=$request->date;
@@ -100,6 +104,10 @@ class MediaController extends Controller
     public function update(Request $request, $id)
     {
         $media = Media::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
         $media->title=$request->title;
         $media->description=$request->description;
         $media->date=$request->date;

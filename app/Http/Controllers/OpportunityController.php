@@ -37,6 +37,10 @@ class OpportunityController extends Controller
     public function store(Request $request)
     {
         $opportunity = new Opportunity();
+        $request->validate([
+            'title' => 'required',
+            'type' => 'required'
+        ]);
         $opportunity->title=$request->title;
         $opportunity->type=$request->type;
         $opportunity->description=$request->description;
@@ -81,6 +85,10 @@ class OpportunityController extends Controller
     public function update(Request $request, $id)
     {
         $opportunity = Opportunity::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'type' => 'required'
+        ]);
         $opportunity->title=$request->title;
         $opportunity->type=$request->type;
         $opportunity->description=$request->description;

@@ -37,6 +37,10 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = new Event();
+        $request->validate([
+            'title' => 'required',
+            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
         $event->title=$request->title;
         $event->description=$request->description;
         $event->date=$request->date;
@@ -99,6 +103,10 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $event = Event::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
+        ]);
         $event->title=$request->title;
         $event->description=$request->description;
         $event->date=$request->date;
