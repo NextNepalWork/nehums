@@ -103,7 +103,6 @@ class EventController extends Controller
         $event->description=$request->description;
         $event->date=$request->date;
         $event->location=$request->location;
-
         if ($request->has('previous_photos')) {
             $data = $request->previous_photos;
         }
@@ -120,7 +119,6 @@ class EventController extends Controller
         }
         $event->image=json_encode($data);
 
-
         if ($thumbnail_img = $request->file('thumbnail_img')) {
             $thumb_image_path = public_path('uploads/events/' . $event->thumbnail_img);
             
@@ -135,6 +133,7 @@ class EventController extends Controller
         }else{
             unset($event->thumbnail_img);
         }
+
 
         $event->save();
         return redirect()->route('events.index')->with('message','event updated successfully');   
