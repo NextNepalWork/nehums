@@ -43,14 +43,12 @@ Route::get('clear', function () {
 	Artisan::call('config:cache');
 });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->name('dashboard')->middleware('auth');
-Route::group(['prefix' => 'admin',  'middleware' => 'auth'], function () {
 
-    // Route::get('/dashboard', function () {
-    //     return view('admin.dashboard');
-    // })->name('dashboard');
+Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
+
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    })->name('dashboard');
 
     Route::get('/social_settings', [SocialSettingsController::class, 'index'])->name('social');
     // Route::post('/social_settings', [SocialSettingsController::class, 'store'])->name('socialStore');

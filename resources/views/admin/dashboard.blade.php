@@ -10,9 +10,9 @@
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>{{count(\App\Models\Subscriber::all())}}</h3>
 
-                <p>New Orders</p>
+                <p>Subscribers</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -25,9 +25,9 @@
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>{{count(\App\Models\Event::all())}}</h3>
 
-                <p>Bounce Rate</p>
+                <p>Events</p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -40,9 +40,9 @@
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>{{count(\App\Models\Team::all())}}</h3>
 
-                <p>Users</p>
+                <p>Teams</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>
@@ -55,9 +55,9 @@
             <!-- small box -->
             <div class="small-box bg-danger">
               <div class="inner">
-                <h3>65</h3>
+                <h3>{{count(\App\Models\Message::all())}}</h3>
 
-                <p>Unique Visitors</p>
+                <p>Messages</p>
               </div>
               <div class="icon">
                 <i class="ion ion-pie-graph"></i>

@@ -12,6 +12,8 @@
                             <a href="{{route('medias.index')}}" class="btn btn-success btn-sm float-right">View Media Coverage</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('medias.update',$media->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')
