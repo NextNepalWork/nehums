@@ -44,7 +44,7 @@
                         <div class="head-icon mx-auto mb-2 text-center">
                             <img class="svg-color" src="{{asset('frontend/assets/images/head-icon.png')}}" class="img-fluid">
                         </div>
-                        <h2 class="text-uppercase"><a href="#">How Could We Help You?</a>
+                        <h2 class="text-uppercase"><a>How Could We Help You?</a>
                         </h2>
                     </div>
                 </div>
@@ -69,6 +69,7 @@
             </div>
 
             <div class="col-10 mt-5 text-center">
+                <a href="{{$banner->url}}">
                 @if (!empty($banner->image))
                     @if(file_exists('uploads/banners/'.$banner->image))
                         <img src="{{asset('uploads/banners/'.$banner->image)}}" class="img-fluid">
@@ -78,6 +79,7 @@
                 @else
                     <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid">
                 @endif
+                </a>
             </div>
         </div>
     </div>

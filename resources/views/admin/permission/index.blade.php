@@ -7,9 +7,9 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="card-title">Permissions</h3>
-                    @can('role-create')
+                    
                     <a href="{{route('permissions.create')}}" class="btn btn-success btn-sm float-right">Add Permission</a>
-                    @endcan
+                    
                 </div>
                 <div class="card-body p-0">
                     @include('admin.includes.message')
@@ -36,20 +36,18 @@
                                             </i>
                                             View
                                         </a>
-                                        @can('role-edit')
                                         <a class="btn btn-info btn-sm" href="{{route('permissions.edit',$permission->id)}}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
-                                        @endcan
-                                        @can('role-delete')
+                                        
                                         <button class="btn btn-danger btn-sm" type="submit">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
                                         </button>
-                                        @endcan
+                                        
                                     </td>
                                 </form>
                             </tr>

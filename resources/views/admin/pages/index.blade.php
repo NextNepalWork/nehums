@@ -6,9 +6,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    @can('role-create')
+                    
                         <a href="{{route('pages.create')}}" class="btn btn-success btn-sm float-right">Add page</a>
-                    @endcan
+                    
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="myTable">
