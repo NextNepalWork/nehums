@@ -12,6 +12,8 @@
                             <a href="{{route('testimonials.index')}}" class="btn btn-success btn-sm float-right">View Testimonial</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('testimonials.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">

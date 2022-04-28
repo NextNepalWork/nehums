@@ -12,6 +12,8 @@
                             <a href="{{route('testimonials.index')}}" class="btn btn-success btn-sm float-right">View Testimonial</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('testimonials.update',$testimonial->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')

@@ -54,10 +54,10 @@
                 </x-button>
 
             </div>
-            <label>Login With :</label>
+            {{-- <label>Login With :</label>
             <a href="{{ route('githubLogin') }}" class="btn btn-social-icon btn-facebook pr-0"><i class="fab fa-github fa-2x"></i></a>
             <a href="{{ url('auth/facebook') }}" class="btn btn-social-icon btn-facebook pr-0"><i class="fab fa-facebook-square fa-2x"></i></a>
-            <a href="" class="btn btn-social-icon btn-gmail"><i class="fas fa-envelope-square fa-2x"></i></a>
+            <a href="" class="btn btn-social-icon btn-gmail"><i class="fas fa-envelope-square fa-2x"></i></a> --}}
 
         </form>
     </x-auth-card>

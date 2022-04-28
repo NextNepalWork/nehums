@@ -12,6 +12,8 @@
                             <a href="{{route('opportunity.index')}}" class="btn btn-success btn-sm float-right">View Opportunity</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('opportunity.update',$opportunity->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')

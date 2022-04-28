@@ -12,6 +12,8 @@
                             <a href="{{route('pages.index')}}" class="btn btn-success btn-sm float-right">View page</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('pages.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">

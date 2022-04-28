@@ -12,6 +12,8 @@
                             <a href="{{route('events.index')}}" class="btn btn-success btn-sm float-right">View Event</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('events.update',$event->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')

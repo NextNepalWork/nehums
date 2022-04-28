@@ -18,6 +18,7 @@
                             <a href="{{route('gallery.index')}}" class="btn btn-success btn-sm float-right">View Gallery</a>
                         </div>
                         <div class="card-body pt-0">
+                            @include('admin.includes.message')
                             <div class="tab-base">
 
                                 <!--Nav Tabs-->
