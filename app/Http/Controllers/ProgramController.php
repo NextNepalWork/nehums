@@ -36,9 +36,10 @@ class ProgramController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'title' => 'required',
-            'slug'=>'required|unique:programs,slug,',
+            'slug'=>'required|unique:programs,slug,'.$id,
+            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
         ]);
 
         $program=new Program();
@@ -97,9 +98,11 @@ class ProgramController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $validated = $request->validate([
+
+        $request->validate([
             'title' => 'required',
             'slug'=>'required|unique:programs,slug,'.$id,
+            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
         ]);
 
         $program = Program::findOrFail($id);
