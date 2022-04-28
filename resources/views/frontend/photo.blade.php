@@ -13,25 +13,29 @@
 <section id="gallery" class="default-padding">
     <div class="container">
         <div id="lightgallery" class="row p-0">
-            @foreach ($photos as $photo)
-                @if (!empty($photo->photos))
-                    @if(file_exists('uploads/gallery/photos/'.$photo->photos))
-                        <div class="col-lg-3 col-md-6" data-src="{{asset('uploads/gallery/photos/'.$photo->photos)}}">
-                            <a href="{{asset('uploads/gallery/photos/'.$photo->photos)}}" target="_blank">
-                                <img src="{{asset('uploads/gallery/photos/'.$photo->photos)}}" class="img-fluid img-responsive">
-                            </a>
-                        </div>
+            @if (count($photos)>0)
+                @foreach ($photos as $photo)
+                    @if (!empty($photo->photos))
+                        @if(file_exists('uploads/gallery/photos/'.$photo->photos))
+                            <div class="col-lg-3 col-md-6" data-src="{{asset('uploads/gallery/photos/'.$photo->photos)}}">
+                                <a href="{{asset('uploads/gallery/photos/'.$photo->photos)}}" target="_blank">
+                                    <img src="{{asset('uploads/gallery/photos/'.$photo->photos)}}" class="img-fluid img-responsive">
+                                </a>
+                            </div>
+                        @else
+                            <div class="col-lg-3 col-md-6">
+                                <img src="{{asset('placeholder.jpg')}}" class="img-fluid img-responsive">
+                            </div>
+                        @endif
                     @else
                         <div class="col-lg-3 col-md-6">
                             <img src="{{asset('placeholder.jpg')}}" class="img-fluid img-responsive">
                         </div>
                     @endif
-                @else
-                    <div class="col-lg-3 col-md-6">
-                        <img src="{{asset('placeholder.jpg')}}" class="img-fluid img-responsive">
-                    </div>
-                @endif
-            @endforeach
+                @endforeach
+            @else
+                Sorry, No Data Found...
+            @endif
         </div>
     </div>
 </section>

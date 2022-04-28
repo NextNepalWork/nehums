@@ -39,11 +39,39 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
+                                            <label>Facebook</label>
+                                            <input type="text" name="facebook" class="form-control" value="{{old('facebook',$team->facebook)}}">
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Twitter</label>
+                                            <input type="text" name="twitter" class="form-control" value="{{old('twitter',$team->twitter)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Instagram</label>
+                                            <input type="text" name="instagram" class="form-control" value="{{old('instagram',$team->instagram)}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>LinkedIn</label>
+                                            <input type="text" name="linkedin" class="form-control" value="{{old('linkedin',$team->linkedin)}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
                                             <label>Details</label>
                                             <textarea class="form-control" name="details">{{old('details',$team->details)}}</textarea>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

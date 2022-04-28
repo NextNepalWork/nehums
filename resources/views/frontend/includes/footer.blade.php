@@ -4,8 +4,17 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 col-12 my-2">
                         <div class="image">
-                            <a href="index.html" class=""> <img src="{{'admin/image/'.$setting->logo}}"
-                                    alt="{{$setting->title}}" class="img-fluid"></a>
+                            <a href="{{route('home')}}" class=""> 
+                                @if (!empty($setting->logo))
+                                    @if(file_exists('admin/image/'.$setting->logo))
+                                        <img src="{{asset('admin/image/'.$setting->logo)}}" alt="{{$setting->title}}" class="img-fluid">
+                                    @else
+                                        <img src="{{asset('placeholder.jpg')}}" class="img-fluid events-image">
+                                    @endif
+                                @else
+                                    <img src="{{asset('placeholder.jpg')}}" class="img-fluid events-image">
+                                @endif
+                            </a>
                         </div>
                         <div class="content mt-3">
                             <p class="font-weight-normal m-0">
@@ -23,16 +32,16 @@
                                 </div>
                             </div>
                             <li>
-                                <a href=" mailto:webmaster@example.com"><span class="mr-2"><i class="fa fa-angle-right"
+                                <a href="{{route('home')}}"><span class="mr-2"><i class="fa fa-angle-right"
                                             aria-hidden="true"></i></span>Home</a>
                                 </h5>
                             </li>
                             <li>
-                                <a href="tel:+4733378901"><span class="mr-2"><i class="fa fa-angle-right"
+                                <a href="{{route('about')}}"><span class="mr-2"><i class="fa fa-angle-right"
                                             aria-hidden="true"></i></span>About Us</a></h5>
                             </li>
                             <li>
-                                <a href=""><span class="mr-2"><i class="fa fa-angle-right"
+                                <a href="{{route('contact')}}"><span class="mr-2"><i class="fa fa-angle-right"
                                             aria-hidden="true"></i></span>Contact Us</a></h5>
                             </li>
                         </ul>

@@ -10,7 +10,6 @@
                         <div class="card-header">
                             <h3 class="card-title">Settings</h3>
                         </div>
-                        
                         <form method="post" action="{{ route('socialUpdate',$social->id) }}">
                             @csrf
                             <input type="hidden" name="_method" value="PATCH">

@@ -32,7 +32,35 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label>Contact</label><br>
-                                            <input type="tel" name="contact" class="form-control">
+                                            <input type="tel" name="contact" class="form-control" value="{{old('contact')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Facebook</label>
+                                            <input type="text" name="facebook" class="form-control" value="{{old('facebook')}}">
+                                        </div>
+                                    </div>
+                                </div> 
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Twitter</label>
+                                            <input type="text" name="twitter" class="form-control" value="{{old('twitter')}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>Instagram</label>
+                                            <input type="text" name="instagram" class="form-control" value="{{old('instagram')}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>LinkedIn</label>
+                                            <input type="text" name="linkedin" class="form-control" value="{{old('linkedin')}}">
                                         </div>
                                     </div>
                                     <div class="col-md-6">
@@ -41,7 +69,7 @@
                                             <textarea class="form-control" name="details">{{old('details')}}</textarea>
                                         </div>
                                     </div>
-                                </div> 
+                                </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

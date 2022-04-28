@@ -122,11 +122,14 @@ Route::get('/programs/{id}',[FrontendController::class,'program_detail'])->name(
 Route::get('/videos',[FrontendController::class,'video_gallery'])->name('videos');
 Route::get('/photos',[FrontendController::class,'photo_gallery'])->name('photos');
 Route::get('/teams',[FrontendController::class,'teams'])->name('teams');
+Route::get('/team/{id}',[FrontendController::class,'team_detail'])->name('team.detail');
+
 Route::get('/contact',[FrontendController::class,'contact'])->name('contact');
 
-
-
-
-
-
+Route::post('/contact-us',[FrontendController::class,'contact_us'])->name('contact_us');
+Route::get('/admission-procedure',[FrontendController::class,'admission'])->name('admission');
+Route::get('/job-vacancy',[FrontendController::class,'job'])->name('job');
+Route::get('/job-detail/{id}',[FrontendController::class,'job_detail'])->name('job-detail');
+Route::get('/volunteer',[FrontendController::class,'volunteer'])->name('volunteer');
+Route::get('/donate-us',[FrontendController::class,'donate'])->name('donate');
 Route::post('/subscribers', [NewsletterController::class,'subscriber'])->name('subscriber');

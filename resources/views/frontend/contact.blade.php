@@ -18,7 +18,7 @@
                         <div class="heading d-flex justify-content-center align-items-center flex-wrap mb-4">
                             <div class="head">
                                 <div class="head-icon mx-auto mb-2 text-center">
-                                    <img class="svg-color" src="frontend/assets/images/head-icon.png">
+                                    <img class="svg-color" src="{{asset('frontend/assets/images/head-icon.png')}}">
                                 </div>
                                 <h2 class="text-uppercase mb-5"><a>Get In Touch With Us</a>
                                 </h2>
@@ -65,20 +65,21 @@
                         </div>
                     </div>
                     <div class="col-lg-8 col-12 mx-auto">
-                        <form class="row py-3" method="post" action="">
+                        <form class="row py-3" method="post" action="{{route('contact_us')}}">
+                            @csrf
+                            <input type="hidden" name="type" value="contact">
                             <div class="col-lg-4 col-12 form-group">
-                                <input type="text" name="txtName" class="form-control" placeholder="First Name"
-                                    value="">
+                                <input type="text" name="name" class="form-control" placeholder="Your Name"
+                                    value="" required>
                             </div>
                             <div class="col-lg-4 col-12 form-group">
-                                <input type="email" name="" class="form-control" placeholder="Your Email" value="">
+                                <input type="email" name="email" class="form-control" placeholder="Your Email" value="" required>
                             </div>
                             <div class="col-lg-4 col-12 form-group">
-                                <input type="text" name="txtPhone" class="form-control" placeholder="Your Phone Number"
-                                    value="">
+                                <input type="number" name="phone" class="form-control" placeholder="Your Phone Number" required>
                             </div>
                             <div class="col-12 form-group">
-                                <textarea name="txtMsg" class="form-control" placeholder="Your Message"
+                                <textarea name="message" class="form-control" placeholder="Your Message"
                                     style="width: 100%; height: 100px"></textarea>
                             </div>
                             <div class="col-12 form-group text-center">
@@ -99,7 +100,7 @@
                 <div class="col-12 google-map">
                     <div class="map">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d14130.946795029693!2d85.34463115!3d27.694531700000002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2snp!4v1640601822243!5m2!1sen!2snp"
+                            src="{{\App\Models\SocialSetting::first()->map}}"
                             width="100%" height="300px" loading="lazy"></iframe>
                     </div>
                 </div>

@@ -25,7 +25,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name">Type</label>
-                                            <input type="text" class="form-control" name="type" value="{{old('type',$opportunity->type)}}">
+                                            <select name="type" class="form-control">
+                                                <option value="" disabled>Select Type</option>
+                                                <option value="admission" @if($opportunity->type=='admission') selected @endif>Admission Procedure</option>
+                                                <option value="job_vacancy" @if($opportunity->type=='job_vacancy') selected @endif>Job Vacancy</option>
+                                                <option value="volunteer" @if($opportunity->type=='volunteer') selected @endif>Volunteer Internship</option>
+                                            </select>
+                                            {{-- <input type="text" class="form-control" name="type" value="{{old('type',$opportunity->type)}}"> --}}
                                         </div>
                                     </div>
                                 </div> 
