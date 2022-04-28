@@ -37,7 +37,11 @@ use App\Http\Controllers\UserController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('clear', function () {
+	Artisan::call('cache:clear');
+	Artisan::call('config:clear');
+	Artisan::call('config:cache');
+});
 
 Route::get('/dashboard', function () {
     return view('admin.dashboard');
