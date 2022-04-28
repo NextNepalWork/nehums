@@ -28,7 +28,15 @@
                                     
                                     <td> {{$opportunity->title}} </td>
                                     
-                                    <td>{{$opportunity->type}}</td>
+                                    <td>
+                                        @if ($opportunity->type =='admission')
+                                            Admission Procedure
+                                        @elseif($opportunity->type=='job_vacancy')
+                                            Job Vacancy
+                                        @elseif($opportunity->type=='volunteer')
+                                            Volunteer Internship
+                                        @endif
+                                    </td>
 
 
                                     <form action="{{route('opportunity.destroy',$opportunity->id)}}" method="post">

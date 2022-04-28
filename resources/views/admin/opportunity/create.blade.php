@@ -24,7 +24,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="name">Type</label><span class="text-danger"> * </span>
-                                            <input type="text" class="form-control" name="type" value="{{old('type')}}" required>
+                                            <select name="type" class="form-control">
+                                                <option value="" disabled selected>Select Type</option>
+                                                <option value="admission">Admission Procedure</option>
+                                                <option value="job_vacancy">Job Vacancy</option>
+                                                <option value="volunteer">Volunteer Internship</option>
+                                            </select>
+                                            {{-- <input type="text" class="form-control" name="type" value="{{old('type')}}" required> --}}
                                         </div>
                                     </div>
                                 </div> 

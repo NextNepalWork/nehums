@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Models\Banner;
 use App\Models\Event;
 use App\Models\Media;
+use App\Models\Message;
+use App\Models\Opportunity;
 use App\Models\Page;
 use App\Models\Photo;
 use App\Models\Program;
@@ -32,6 +34,13 @@ class FrontendController extends Controller
         $setting=SiteSetting::first();
 
         $about = Page::where('slug','about-us')->first();
+        if(empty($about)){
+            Page::create([
+                'title' => 'About Us',
+                'slug' => 'about-us',
+                'content' => 'This is about page',
+            ]);
+        }
         return view('frontend.about',compact('setting','about'));
     }
 
@@ -85,10 +94,55 @@ class FrontendController extends Controller
         
         return view('frontend.teams',compact('setting','teams'));
     }
+    public function team_detail($id){
+        $setting=SiteSetting::first();
+        $team = Team::findOrFail($id);
+        
+        return view('frontend.team-detail',compact('setting','team'));
+    }
     public function contact(){
         $setting=SiteSetting::first();
         
         return view('frontend.contact',compact('setting'));
+    }
+    public function contact_us(Request $request){
+        $message = new Message();
+        $message->email = $request->email;
+        $message->name = $request->name;
+        $message->message = $request->message;
+        $message->phone = $request->phone;
+        $message->type=$request->type;
+        $message->save();
+        return back()->with('message','Message Send Successfully');
+
+
+    }
+    public function admission(){
+        $setting=SiteSetting::first();
+        $admissions=Opportunity::where('type','admission')->get();
+        return view('frontend.admission',compact('setting','admissions'));
+    }
+    public function job(){
+        $setting=SiteSetting::first();
+        $jobs=Opportunity::where('type','job_vacancy')->get();
+        
+        return view('frontend.job',compact('setting','jobs'));
+    }
+    public function job_detail($id){
+        $setting=SiteSetting::first();
+        $media_coverages = Media::orderBy('created_at','desc')->limit(5)->get();
+        $job = Opportunity::find($id);
+        
+        return view('frontend.job-detail',compact('setting','media_coverages','job'));
+    }
+    public function volunteer(){
+        $setting=SiteSetting::first();
+        $volunteers=Opportunity::where('type','volunteer')->get();
+        return view('frontend.volunteer',compact('setting','volunteers'));
+    }
+    public function donate(){
+        $setting=SiteSetting::first();
+        return view('frontend.donate',compact('setting'));
     }
     
 }

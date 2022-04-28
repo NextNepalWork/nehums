@@ -29,56 +29,64 @@
     <nav class="navbar header-sticky justify-content-around">
         <div class="image">
             <a class="navbar-brand" href="{{route('home')}}">
-                <img src="{{asset('admin/image/'.$setting->logo)}}" alt="{{$setting->title}}" class="img-fluid">
+                @if (!empty($setting->logo))
+                    @if(file_exists('admin/image/'.$setting->logo))
+                    <img src="{{asset('admin/image/'.$setting->logo)}}" alt="{{$setting->title}}" class="img-fluid">
+                    @else
+                        <img src="{{asset('placeholder.jpg')}}" class="img-fluid events-image">
+                    @endif
+                @else
+                    <img src="{{asset('placeholder.jpg')}}" class="img-fluid events-image">
+                @endif
             </a>
         </div>
         <div class="navbar-menus d-xl-block d-lg-block d-none" id="navbarmain">
             <ul class="navbar-nav py-4 py-md-0 d-flex flex-row flex-wrap" role="menu">
                 <li class="nav-item mx-2">
-                    <a class="nav-link active" href="{{route('home')}}">Home</a>
+                    <a class="nav-link {{ Route::is('home') ? 'active' : '' }}" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="{{route('about')}}">About Us</a>
+                    <a class="nav-link {{ Route::is('about') ? 'active' : '' }}" href="{{route('about')}}">About Us</a>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle {{ Route::is('programs') || Route::is('events') ? 'active' : '' }}" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"> Our Work<span class="ml-1">
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu position-absolute p-0 border-0">
-                        <a class="dropdown-item" href="{{route('programs')}}">Programs</a>
-                        <a class="dropdown-item" href="{{route('events')}}">Events</a>
+                        <a class="dropdown-item {{ Route::is('programs') ? 'active' : '' }}" href="{{route('programs')}}">Programs</a>
+                        <a class="dropdown-item {{ Route::is('events') ? 'active' : '' }}" href="{{route('events')}}">Events</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle {{ Route::is('videos') || Route::is('photos') ? 'active' : '' }}" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">Gallery<span class="ml-1">
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu position-absolute p-0 border-0">
-                        <a class="dropdown-item" href="{{route('videos')}}">Video Gallery</a>
-                        <a class="dropdown-item" href="{{route('photos')}}">Photo Gallery</a>
+                        <a class="dropdown-item {{ Route::is('videos') ? 'active' : '' }}" href="{{route('videos')}}">Video Gallery</a>
+                        <a class="dropdown-item {{ Route::is('photos') ? 'active' : '' }}" href="{{route('photos')}}">Photo Gallery</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="{{route('teams')}}">Our Team</a>
+                    <a class="nav-link {{ Route::is('teams') ? 'active' : '' }}" href="{{route('teams')}}">Our Team</a>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown"
+                    <a class="nav-link dropdown-toggle {{ Route::is('admission') || Route::is('job') || Route::is('volunteer') ? 'active' : '' }}" href="#" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false"> Opportunity<span class="ml-1">
                             <i class="fa fa-angle-down" aria-hidden="true"></i>
                         </span>
                     </a>
                     <div class="dropdown-menu position-absolute p-0 border-0">
-                        <a class="dropdown-item" href="admission-procedure.html">Admission Procedure</a>
-                        <a class="dropdown-item" href="job-vacancy.html">Job Vacancy</a>
-                        <a class="dropdown-item" href="volunteer-internship.html">Volunteer Internship</a>
+                        <a class="dropdown-item {{ Route::is('admission') ? 'active' : '' }}" href="{{route('admission')}}">Admission Procedure</a>
+                        <a class="dropdown-item {{ Route::is('job') ? 'active' : '' }}" href="{{route('job')}}">Job Vacancy</a>
+                        <a class="dropdown-item {{ Route::is('volunteer') ? 'active' : '' }}" href="{{route('volunteer')}}">Volunteer Internship</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">
-                    <a class="nav-link" href="{{route('contact')}}">Contact Us</a>
+                    <a class="nav-link {{ Route::is('contact') ? 'active' : '' }}" href="{{route('contact')}}">Contact Us</a>
                 </li>
                 <!-- Popup Search Modal Anchor -->
                 <!-- <li class="nav-item pl-4 pl-md-0 ml-0 ml-md-4">
@@ -91,7 +99,7 @@
         <div class="donate-btn desk-nav d-xl-block d-lg-block d-none">
             <ul class="d-flex align-items-center justify-content-between m-0">
                 <li>
-                    <a href="donate.html" class="anchor-btn2 py-2">Donate<span class="ml-2"><i
+                    <a href="{{route('donate')}}" class="anchor-btn2 py-2">Donate<span class="ml-2"><i
                                 class="fa fa-angle-right"></i></span> </a>
                 </li>
             </ul>

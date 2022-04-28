@@ -7,25 +7,28 @@
     <div class="row">
         <div class="col-xl-12 col-lg-12 col-md-12 col-12">
             <div class="slick-slider">
-                @foreach ($sliders as $slider)
-                <div class="slick-item position-relative">
-                    @if (!empty($slider->image))
-                        @if(file_exists('uploads/sliders/'.$slider->image))
-                            <img src="{{asset('uploads/sliders/'.$slider->image)}}" class="img-fluid w-100">
-                        @else
-                            <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid w-100">
-                        @endif
-                    @else
-                        <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid w-100">
-                    @endif
-                    <div class="description text-center">
-                        <h1>{{$slider->title}}</h1>
-                        <a href="{{$slider->link}}" class="anchor-btn">Donate<span class="ml-2"><i
-                                    class="fa fa-angle-right"></i></span> </a>
-                    </div>
-                </div>
-                
-                @endforeach
+                @if (count($sliders)>0)
+                    @foreach ($sliders as $slider)
+                        <div class="slick-item position-relative">
+                            @if (!empty($slider->image))
+                                @if(file_exists('uploads/sliders/'.$slider->image))
+                                    <img src="{{asset('uploads/sliders/'.$slider->image)}}" class="img-fluid w-100">
+                                @else
+                                    <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid w-100">
+                                @endif
+                            @else
+                                <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid w-100">
+                            @endif
+                            <div class="description text-center">
+                                <h1>{{$slider->title}}</h1>
+                                <a href="{{route('donate')}}" class="anchor-btn">Donate<span class="ml-2"><i
+                                            class="fa fa-angle-right"></i></span> </a>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid w-100">   
+                @endif
             </div>
         </div>
     </div>
@@ -39,9 +42,9 @@
                 <div class="heading d-flex justify-content-center align-items-center flex-wrap mb-4">
                     <div class="head">
                         <div class="head-icon mx-auto mb-2 text-center">
-                            <img class="svg-color" src="frontend/assets/images/head-icon.png" class="img-fluid">
+                            <img class="svg-color" src="{{asset('frontend/assets/images/head-icon.png')}}" class="img-fluid">
                         </div>
-                        <h2 class="text-uppercase"><a href="product-listing.html">How Could We Help You?</a>
+                        <h2 class="text-uppercase"><a href="#">How Could We Help You?</a>
                         </h2>
                     </div>
                 </div>
@@ -50,7 +53,7 @@
                 <div class="row text-center">
                     @foreach ($steps as $step)
                         <div class="col-lg-4 col-md-6 col-12 my-lg-0 my-2 mx-auto">
-                            <a class="category_block bg-white px-4" href="product-listing.html">
+                            <a class="category_block bg-white px-4" href="#">
                                 <div class="category_img"> 
                                     {{-- <img class="svg-color" src="frontend/assets/images/hand.svg" class="img-fluid W-100" alt="category-image">  --}}
                                     <i class="{{$step->icon}}"></i>
@@ -66,9 +69,15 @@
             </div>
 
             <div class="col-10 mt-5 text-center">
-
-                <img src="{{asset('uploads/banners/'.$banner->image)}}"
-                    class="img-fluid">
+                @if (!empty($banner->image))
+                    @if(file_exists('uploads/banners/'.$banner->image))
+                        <img src="{{asset('uploads/banners/'.$banner->image)}}" class="img-fluid">
+                    @else
+                        <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid">
+                    @endif
+                @else
+                    <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid">
+                @endif
             </div>
         </div>
     </div>
@@ -78,14 +87,14 @@
 <section id="parallax" class="position-relative">
     <div class="discription2 px-4 py-3">
         <div class="head-icon mx-auto mb-2 text-center">
-            <img class="svg-color" src="frontend/assets/images/head-icon.png" class="img-fluid">
+            <img class="svg-color" src="{{asset('frontend/assets/images/head-icon.png')}}" class="img-fluid">
         </div>
         <div class="head">
             <h1 class="font-weight-bold">BECOME A VOLUNTEER</h1>
             <p class="">The patriot volunteer, fighting for country and his rights, makes the
                 most reliable soldier on earth.</p>
         </div>
-        <a href="volunteer-internship.html" class="effect anchor-btn mt-2" tabindex="0">Join Us</a>
+        <a href="{{route('volunteer')}}" class="effect anchor-btn mt-2" tabindex="0">Join Us</a>
     </div>
 </section>
 <!-- Parallax Ends -->
@@ -186,9 +195,9 @@
                 <div class="heading d-flex justify-content-center align-items-center flex-wrap mb-4">
                     <div class="head">
                         <div class="head-icon mx-auto mb-2 text-center">
-                            <img class="svg-color" src="frontend/assets/images/head-icon.png" class="img-fluid">
+                            <img class="svg-color" src="{{asset('frontend/assets/images/head-icon.png')}}" class="img-fluid">
                         </div>
-                        <h2 class="text-uppercase"><a href="product-listing.html">events</a>
+                        <h2 class="text-uppercase"><a href="{{route('events')}}">events</a>
                         </h2>
                     </div>
                 </div>
@@ -207,7 +216,7 @@
             </div>
             <div class="col-lg-7 col-12 mb-2">
                 <div class="title d-flex justify-content-between align-items-center flex-wrap">
-                    <a href="events.html" class="font-weight-bold">{{$event->title}}
+                    <a href="{{route('event.detail',$event->id)}}" class="font-weight-bold">{{$event->title}}
                     </a>
                     <div class="date">
                         {{$event->date}}
@@ -236,9 +245,9 @@
                 <div class="heading d-flex justify-content-center align-items-center flex-wrap mb-4">
                     <div class="head">
                         <div class="head-icon mx-auto mb-2 text-center">
-                            <img class="svg-color" src="frontend/assets/images/head-icon.png" class="img-fluid">
+                            <img class="svg-color" src="{{asset('frontend/assets/images/head-icon.png')}}" class="img-fluid">
                         </div>
-                        <h2 class="text-uppercase"><a href="product-listing.html">PROGRAMS</a>
+                        <h2 class="text-uppercase"><a href="{{route('programs')}}">PROGRAMS</a>
                         </h2>
                     </div>
                 </div>

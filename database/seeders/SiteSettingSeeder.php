@@ -19,7 +19,8 @@ class SiteSettingSeeder extends Seeder
             'address' => 'address goes here',
             'contact' => '9825362525',
             'email' => 'test@test.com',
-            'footer' => 'footer goes here'
+            'footer' => 'footer goes here',
+
         ]);
     }
 }

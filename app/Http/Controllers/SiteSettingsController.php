@@ -15,7 +15,19 @@ class SiteSettingsController extends Controller
      */
     public function index()
     {
-        $setting = SiteSetting::find(1);
+        $setting = SiteSetting::first();
+        if(empty($setting)){
+            $setting=new SiteSetting();
+            $setting->title = 'Nehums';
+            $setting->address = 'address';
+            $setting->contact = 'contact';
+            $setting->email = 'email';
+            $setting->footer = 'footer';
+            $setting->bank = 'bank';
+            $setting->account_no = 'account_no';
+            $setting->branch = 'branch';
+            $setting->save();
+        }
         return view('admin.siteSettings.index', compact('setting'));
     }
 
@@ -69,10 +81,10 @@ class SiteSettingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request,$id)
     {
 
-        $setting = SiteSetting::find(1);
+        $setting = SiteSetting::find($id);
         $this->validateData($request);
 
 

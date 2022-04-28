@@ -5,7 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>@yield('title')</title>
 
-  <link type="image/x-icon" href="{{asset('admin/image/'.\App\Models\SiteSetting::first()->favicon)}}" rel="shortcut icon">
+  @php
+      $favicon_image = \App\Models\SiteSetting::first();
+  @endphp
+  @if (!empty($favicon_image))
+      <link type="image/x-icon" href="{{asset('admin/image/'.$favicon_image->favicon)}}" rel="shortcut icon">
+  @endif
 
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">

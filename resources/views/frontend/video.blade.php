@@ -13,18 +13,21 @@
 <section id="gallery" class="default-padding">
     <div class="container">
         <div id="lightgallery" class="row p-0">
-            @foreach ($videos as $video)
-                <div class="col-xl-3 col-md-6 col-12" data-src="{{asset('uploads/gallery/videos/'.$video->videos)}}">
-                    <a data-src="{{asset('uploads/gallery/videos/'.$video->videos)}}" class="position-relative">
-                        <img class="img-responsive"
-                            src="{{asset('uploads/gallery/videos/'.$video->videos)}}" />
-                        <div class="video-play-button" href="#">
-                            <span></span>
-                        </div>
-                    </a>
-                </div>
-            @endforeach
-
+            @if (count($videos)>0)
+                @foreach ($videos as $video)
+                    <div class="col-xl-3 col-md-6 col-12" data-src="{{asset('uploads/gallery/videos/'.$video->videos)}}">
+                        <a data-src="{{asset('uploads/gallery/videos/'.$video->videos)}}" class="position-relative">
+                            <img class="img-responsive"
+                                src="{{asset('uploads/gallery/videos/'.$video->videos)}}" />
+                            <div class="video-play-button" href="#">
+                                <span></span>
+                            </div>
+                        </a>
+                    </div>
+                @endforeach    
+            @else
+                Sorry, No Data Found....          
+            @endif
         </div>
     </div>
 </section>
