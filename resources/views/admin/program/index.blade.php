@@ -51,20 +51,16 @@
                                                 </i>
                                                 View
                                             </a>
-                                            @can('role-edit')
                                             <a class="btn btn-info btn-sm" href="{{route('programs.edit',$program->id)}}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit
                                             </a>
-                                            @endcan
-                                            @can('role-delete')
                                             <button class="btn btn-danger btn-sm" type="submit">
                                                 <i class="fas fa-trash">
                                                 </i>
                                                 Delete
                                             </button>
-                                            @endcan
                                         </td>
                                     </form>
 

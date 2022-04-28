@@ -145,14 +145,12 @@
                   <p>List Users</p>
                 </a>
               </li>
-              @can('role-create')
               <li class="nav-item">
                 <a href="{{route('users.create')}}" class="nav-link {{Route::is('users.create') ? 'active' : ''}}">
                   <i class="far fa-circle nav-icon"></i>
                   <p>Add User</p>
                 </a>
               </li>
-              @endcan
             </ul>
           </li>
           {{-- @can('role-create')

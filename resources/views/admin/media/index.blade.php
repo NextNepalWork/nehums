@@ -6,9 +6,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    @can('role-create')
+                    
                         <a href="{{route('medias.create')}}" class="btn btn-success btn-sm float-right">Add Media Coverage</a>
-                    @endcan
+                    
                 </div>
                 <div class="card-body p-0">
                     <table class="table table-striped projects" id="myTable">
@@ -52,20 +52,20 @@
                                                 </i>
                                                 View
                                             </a>
-                                            @can('role-edit')
+                                            
                                             <a class="btn btn-info btn-sm" href="{{route('medias.edit',$media->id)}}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit
                                             </a>
-                                            @endcan
-                                            @can('role-delete')
+                                            
+                                            
                                             <button class="btn btn-danger btn-sm show_confirm" type="submit" data-toggle="tooltip" title='Delete'>
                                                 <i class="fas fa-trash">
                                                 </i>
                                                 Delete
                                             </button>
-                                            @endcan
+                                            
                                         </td>
                                     </form>
 
