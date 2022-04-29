@@ -22,7 +22,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Icon</label>
-                                            <input type="text" class="form-control" name="icon" value="{{old('icon')}}">
+                                            <input type="file" class="form-control" name="icon">
                                         </div>
                                     </div>
                                 </div>
@@ -37,10 +37,10 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <label>Description</label>
-                                        <textarea name="text" class="form-control">{{old('text')}}</textarea>
+                                        <textarea name="text" class="form-control" rows="5">{{old('text')}}</textarea>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success btn-sm float-right">Save</button> 
+                                <button type="submit" class="btn btn-success btn-sm float-right mt-3">Save</button> 
                             </form>
                         </div> 
                     </div>

@@ -65,6 +65,7 @@ class MediaController extends Controller
         }
         // dd($data);
         $media->image=json_encode($data);
+        dd($media);
 
         $media->save();
         return redirect()->route('medias.index')->with('message','media added successfully');

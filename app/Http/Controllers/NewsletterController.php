@@ -47,7 +47,7 @@ class NewsletterController extends Controller
                     try {
                         Mail::to($email)->queue(new EmailManager($array));
                     } catch (\Exception $e) {
-                        dd($e);
+                        return back()->with('error','Mail not send!!Error establishing connection');
                     }
             	}
             }

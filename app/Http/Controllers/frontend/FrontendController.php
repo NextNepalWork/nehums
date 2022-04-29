@@ -23,7 +23,7 @@ class FrontendController extends Controller
     public function index(){
         $setting=SiteSetting::first();
         $sliders=Slider::where('status',1)->get();
-        $steps=Step::all();
+        $steps=Step::latest()->limit(3)->get();
         $banner=Banner::first();
         $events=Event::orderBy('created_at','desc')->get();
         $programs=Program::orderBy('created_at','desc')->where('status',1)->limit(3)->get();

@@ -55,8 +55,15 @@
                         <div class="col-lg-4 col-md-6 col-12 my-lg-0 my-2 mx-auto">
                             <a class="category_block bg-white px-4" href="#">
                                 <div class="category_img"> 
-                                    {{-- <img class="svg-color" src="frontend/assets/images/hand.svg" class="img-fluid W-100" alt="category-image">  --}}
-                                    <i class="{{$step->icon}}"></i>
+                                    @if (!empty($step->icon))
+                                        @if(file_exists('uploads/steps/'.$step->icon))
+                                            <img class="svg-color img-fluid W-100" src="{{asset('uploads/steps/'.$step->icon)}}" alt="category-image"> 
+                                        @else
+                                            <img class="svg-color img-fluid W-100" src="{{asset('placeholder.jpg')}}" alt="category-image"> 
+                                        @endif
+                                    @else
+                                        <img class="svg-color img-fluid W-100" src="{{asset('placeholder.jpg')}}" alt="category-image"> 
+                                    @endif
                                     </div>
                                 <div class="category_content mx-auto mt-3">
                                     <h5 class="main-head font-weight-normal mb-4">{{$step->title}}</h6>
