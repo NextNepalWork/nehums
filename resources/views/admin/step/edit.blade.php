@@ -23,7 +23,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label>Icon</label>
-                                            <input type="text" class="form-control" name="icon" value="{{old('icon',$step->icon)}}">
+                                            <input type="file" class="form-control" name="icon">
                                         </div>
                                     </div>
                                 </div>

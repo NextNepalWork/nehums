@@ -18,6 +18,15 @@
                                 <p><span class="font-weight-bold">Name: </span>{{$message->name}}</p>
                                 <p><span class="font-weight-bold">Email: </span>{{$message->email}}</p>
                                 <p><span class="font-weight-bold">Phone: </span>{{$message->phone}}</p>
+                                <p><span class="font-weight-bold">Type: </span>  
+                                    @if ($message->type=='contact')
+                                        Contact
+                                    @elseif($message->type=='job')
+                                        Job Vacancy
+                                    @elseif($message->type=='volunteer')
+                                        Volunteer Internship
+                                    @endif
+                                </p>
                                 <p><span class="font-weight-bold">Subject: </span>{{$message->subject}}</p>
                                 <p><span class="font-weight-bold">Message: </span>{!! $message->message !!}</p>
                             </div>

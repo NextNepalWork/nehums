@@ -33,6 +33,16 @@
         .dropdown-menu .active{
             background-color:var(--main-color) !important;
             /* color: #ffffff!important; */
+            
+        }
+        #parallax {
+            background-attachment: fixed;
+            background-size: cover;
+            background-position: top;
+            background-repeat: no-repeat;
+            min-height: 70vh;
+            max-height: 70vh;
+            background-image: url('{{asset("frontend/assets/images/banner/banner.jpg")}}');
         }
     </style>
     <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">

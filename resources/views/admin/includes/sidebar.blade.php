@@ -257,15 +257,14 @@
             </ul> --}}
           </li>
           
-          <li class="nav-item">
+          {{-- <li class="nav-item">
             <a href="{{route('testimonials.index')}}" class="nav-link {{ Route::is('testimonials.index','testimonials.create','testimonials.edit') ? 'active' : '' }}">
               <i class="nav-icon fas fa-tree"></i>
               <p>
                 Testimonials
-                {{-- <i class="fas fa-angle-right right"></i> --}}
               </p>
             </a>
-          </li>
+          </li> --}}
 
           <li class="nav-item">
             <a href="{{route('teams.index')}}" class="nav-link {{ Route::is('teams.index','teams.create','teams.edit') ? 'active' : '' }}">

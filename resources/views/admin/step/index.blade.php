@@ -19,9 +19,9 @@
                         <thead>
                             <tr>
                                 <th> # </th>
-                                <th>Icon</th>
-                                <th> Title </th>
-                                <th>Description</th>
+                                <th width="10%">Icon</th>
+                                <th width="20%"> Title </th>
+                                <th width="40%">Description</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -32,7 +32,15 @@
                                 <tr>
                                     <td> {{$loop->iteration}} </td>
                                     <td>
-                                        <i class="{{$step->icon}}"></i>
+                                        @if (!empty($step->icon))
+                                            @if(file_exists('uploads/steps/'.$step->icon))
+                                                <img class="svg-color img-fluid W-100" src="{{asset('uploads/steps/'.$step->icon)}}" alt="category-image"> 
+                                            @else
+                                                <img class="svg-color img-fluid W-100" src="{{asset('placeholder.jpg')}}" alt="category-image"> 
+                                            @endif
+                                        @else
+                                            <img class="svg-color img-fluid W-100" src="{{asset('placeholder.jpg')}}" alt="category-image"> 
+                                        @endif
                                     </td>
                                     <td> {{$step->title}} </td>
                                     <td>

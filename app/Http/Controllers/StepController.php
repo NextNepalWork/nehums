@@ -43,7 +43,11 @@ class StepController extends Controller
         ]);
         $step->title=$request->title;
         $step->text=$request->text;
-        $step->icon=$request->icon;
+        if ($request->hasFile('icon')) {
+            $iconName = time().'.'.$request->icon->extension();  
+            $request->icon->move(public_path('uploads/steps/'), $iconName);
+            $step->icon= $iconName;
+        }
 
         $step->save();
         return redirect()->route('steps.index')->with('message','Step added successfully');
@@ -88,7 +92,21 @@ class StepController extends Controller
         ]);
         $step->title=$request->title;
         $step->text=$request->text;
-        $step->icon=$request->icon;
+
+        if ($icon = $request->file('icon')) {
+            $icon_path = public_path('uploads/steps/' . $step->icon);
+            
+            if(file_exists($icon_path)){
+                unlink($icon_path);
+            }
+                $destinationPath = 'uploads/steps/';
+                $profileicon = date('YmdHis') . "." .$icon->getClientOriginalName();
+                $icon->move($destinationPath, $profileicon);
+                $step->icon = "$profileicon";
+            
+        }else{
+            unset($step->icon);
+        }
 
         $step->save();
         return redirect()->route('steps.index')->with('message','Step updated successfully');
