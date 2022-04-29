@@ -119,7 +119,7 @@ class PageController extends Controller
             if ($image = $request->file('meta_image')) {
                 $image_path = public_path('uploads/custom-pages/' . $page->meta_image);
                 
-                if(file_exists($image_path)){
+                if(is_file($image_path)){
                     unlink($image_path);
                 }
                     $destinationPath = 'uploads/custom-pages/';

@@ -27,7 +27,7 @@
                                 </h5>
                             </div>
 
-                            <div id="collapse{{$key}}" class="collapse show" aria-labelledby="heading{{$key}}"
+                            <div id="collapse{{$key}}" class="collapse {{($key==0) ? 'show' : ''}}" aria-labelledby="heading{{$key}}"
                                 data-parent="#accordion">
                                 <div class="card-body">
                                     {!! $admission->description !!}

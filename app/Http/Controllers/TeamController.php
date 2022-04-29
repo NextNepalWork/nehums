@@ -39,7 +39,7 @@ class TeamController extends Controller
         $team = new Team();
         $request->validate([
             'name' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg,gif',
+            'image' => 'required|image',
             // 'slug'=>'unique:teams,slug,',
         ]);
         $team->name=$request->name;
@@ -48,6 +48,11 @@ class TeamController extends Controller
         $team->designation=$request->designation;
         $team->details=$request->details;
         $team->contact=$request->contact;
+        $team->facebook=$request->facebook;
+        $team->twitter=$request->twitter;
+        $team->instagram=$request->instagram;
+        $team->linkedin=$request->linkedin;
+
         if ($request->hasFile('image')) {
             $imageName = time().'.'.$request->image->extension();  
      
@@ -94,7 +99,7 @@ class TeamController extends Controller
         $team = Team::findOrFail($id);
         $request->validate([
             'name' => 'required',
-            'image' => 'nullable|mimes:jpg,png,jpeg,gif',
+            'image' => 'nullable|image',
             // 'slug'=>'unique:teams,slug,'.$id, 
         ]);
         $team->name=$request->name;
@@ -103,6 +108,10 @@ class TeamController extends Controller
         $team->designation=$request->designation;
         $team->details=$request->details;
         $team->contact=$request->contact;
+        $team->facebook=$request->facebook;
+        $team->twitter=$request->twitter;
+        $team->instagram=$request->instagram;
+        $team->linkedin=$request->linkedin;
         if ($image = $request->file('image')) {
             $image_path = public_path('uploads/teams/' . $team->image);
             

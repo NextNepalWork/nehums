@@ -64,7 +64,7 @@ class GalleryController extends Controller
     {
         $gallery = new Photo();
         $request->validate([
-            'photos' => 'required|image|mimes:jpg,png,jpeg,gif,svg',
+            'photos' => 'required|image',
         ]);
         if ($request->hasFile('photos')) {
             $name = time().'.'.$request->photos->extension();

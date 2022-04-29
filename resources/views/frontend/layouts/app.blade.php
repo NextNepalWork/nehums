@@ -35,7 +35,7 @@
             /* color: #ffffff!important; */
             
         }
-        #parallax {
+        #parallax,#parallax-newsletter {
             background-attachment: fixed;
             background-size: cover;
             background-position: top;

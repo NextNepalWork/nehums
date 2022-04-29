@@ -39,7 +39,7 @@ class ProgramController extends Controller
         $request->validate([
             'title' => 'required',
             'slug'=>'unique:programs,slug,',
-            'image' => 'required|mimes:jpg,png,jpeg,gif'
+            'image' => 'required|image'
         ]);
 
         $program=new Program();
@@ -102,7 +102,7 @@ class ProgramController extends Controller
         $request->validate([
             'title' => 'required',
             'slug'=>'unique:programs,slug,'.$id,
-            'image' => 'nullable|mimes:jpg,png,jpeg,gif'
+            'image' => 'nullable|image'
         ]);
 
         $program = Program::findOrFail($id);

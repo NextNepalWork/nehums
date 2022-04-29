@@ -39,7 +39,7 @@ class SliderController extends Controller
         $slider = new Slider();
         $request->validate([
             'status' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg,gif'
+            'image' => 'required|image'
         ]);
 
         $slider->link=$request->link;
@@ -91,7 +91,7 @@ class SliderController extends Controller
         $slider = Slider::findOrFail($id);
         $request->validate([
             'status' => 'required',
-            'image' => 'required|mimes:jpg,png,jpeg,gif'
+            'image' => 'required|image'
         ]);
         $slider->link=$request->link;
         $slider->status=$request->status;

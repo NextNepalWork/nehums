@@ -38,7 +38,7 @@ class BannerController extends Controller
     {
         $banner = new Banner();
         $request->validate([
-            'image' => 'required|mimes:jpg,png,jpeg,gif'
+            'image' => 'required|image'
         ]);
         $banner->url=$request->url;
         $banner->status=$request->status;
@@ -87,7 +87,7 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail($id);
         $request->validate([
-            'image' => 'nullable|mimes:jpg,png,jpeg,gif'
+            'image' => 'nullable|image'
         ]);
         $banner->url=$request->url;
         $banner->status=$request->status;
