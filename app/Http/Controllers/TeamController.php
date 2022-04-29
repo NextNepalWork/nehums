@@ -40,8 +40,11 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required',
             'image' => 'required|mimes:jpg,png,jpeg,gif',
+            // 'slug'=>'unique:teams,slug,',
         ]);
         $team->name=$request->name;
+        // $team->slug=str_replace(' ','-',$request->name);
+
         $team->designation=$request->designation;
         $team->details=$request->details;
         $team->contact=$request->contact;
@@ -92,8 +95,11 @@ class TeamController extends Controller
         $request->validate([
             'name' => 'required',
             'image' => 'nullable|mimes:jpg,png,jpeg,gif',
+            // 'slug'=>'unique:teams,slug,'.$id, 
         ]);
         $team->name=$request->name;
+        // $team->slug=str_replace(' ','-',$request->name);
+
         $team->designation=$request->designation;
         $team->details=$request->details;
         $team->contact=$request->contact;

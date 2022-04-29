@@ -3,6 +3,10 @@
 @section('title')Add Program -  {{ config('app.name', 'Laravel') }} @endsection
 @section('content')
 
+{{-- @php
+    $a="lets help";
+    dd(str_replace(' ','-',$a));
+@endphp --}}
     <section class="content">
         <div class="container-fluid">
             <div class="row">
@@ -19,18 +23,18 @@
                             <form action="{{route('programs.store')}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Title</label> <span class="text-danger"> * </span>
                                             <input type="text" class="form-control" name="title" value="{{old('title')}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="slug">Slug</label><span class="text-danger"> * </span>
                                             <input type="text" class="form-control" name="slug" value="{{old('slug')}}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div> 
 
                                 <div class="row">

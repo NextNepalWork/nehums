@@ -40,12 +40,15 @@ class MediaController extends Controller
         $media = new Media();
         $request->validate([
             'title' => 'required',
+            // 'slug'=>'unique:media,slug,',
             'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
         ]);
         $media->title=$request->title;
         $media->description=$request->description;
         $media->date=$request->date;
         $media->location=$request->location;
+        // $media->slug=str_replace(' ','-',$request->title);
+
 
 
         if ($request->hasFile('thumbnail_img')) {
@@ -65,7 +68,7 @@ class MediaController extends Controller
         }
         // dd($data);
         $media->image=json_encode($data);
-        dd($media);
+        
 
         $media->save();
         return redirect()->route('medias.index')->with('message','media added successfully');
@@ -107,9 +110,11 @@ class MediaController extends Controller
         $media = Media::findOrFail($id);
         $request->validate([
             'title' => 'required',
-            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+            // 'slug'=>'unique:media,slug,'.$id,
+            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
         ]);
         $media->title=$request->title;
+        // $media->slug=str_replace(' ','-',$request->title);
         $media->description=$request->description;
         $media->date=$request->date;
         $media->location=$request->location;

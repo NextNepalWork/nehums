@@ -48,7 +48,7 @@ class PageController extends Controller
             $page->content = $request->content;
             $page->meta_title = $request->meta_title;
             $page->meta_description = $request->meta_description;
-            $page->keywords = $request->keywords;
+            // $page->keywords = $request->keywords;
 
             if ($request->hasFile('meta_image')) {
                 $imageName = time().'.'.$request->meta_image->extension();  

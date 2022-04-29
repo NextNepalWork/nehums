@@ -39,9 +39,11 @@ class OpportunityController extends Controller
         $opportunity = new Opportunity();
         $request->validate([
             'title' => 'required',
+            // 'slug'=>'unique:opportunities,slug,',
             'type' => 'required'
         ]);
         $opportunity->title=$request->title;
+        // $opportunity->slug=str_replace(' ','-',$request->title);
         $opportunity->type=$request->type;
         $opportunity->description=$request->description;
 
@@ -87,9 +89,12 @@ class OpportunityController extends Controller
         $opportunity = Opportunity::findOrFail($id);
         $request->validate([
             'title' => 'required',
+            // 'slug'=>'unique:opportunities,slug,'.$id,
             'type' => 'required'
         ]);
         $opportunity->title=$request->title;
+        // $opportunity->slug=str_replace(' ','-',$request->title);
+
         $opportunity->type=$request->type;
         $opportunity->description=$request->description;
 
