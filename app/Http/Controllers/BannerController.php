@@ -37,6 +37,9 @@ class BannerController extends Controller
     public function store(Request $request)
     {
         $banner = new Banner();
+        $request->validate([
+            'image' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
         $banner->url=$request->url;
         $banner->status=$request->status;
         if ($request->hasFile('image')) {
@@ -83,6 +86,9 @@ class BannerController extends Controller
     public function update(Request $request, $id)
     {
         $banner = Banner::findOrFail($id);
+        $request->validate([
+            'image' => 'nullable|mimes:jpg,png,jpeg,gif'
+        ]);
         $banner->url=$request->url;
         $banner->status=$request->status;
 

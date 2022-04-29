@@ -37,6 +37,10 @@ class EventController extends Controller
     public function store(Request $request)
     {
         $event = new Event();
+        $request->validate([
+            'title' => 'required',
+            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
         $event->title=$request->title;
         $event->description=$request->description;
         $event->date=$request->date;
@@ -99,11 +103,14 @@ class EventController extends Controller
     public function update(Request $request, $id)
     {
         $event = Event::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
+        ]);
         $event->title=$request->title;
         $event->description=$request->description;
         $event->date=$request->date;
         $event->location=$request->location;
-
         if ($request->has('previous_photos')) {
             $data = $request->previous_photos;
         }
@@ -120,7 +127,6 @@ class EventController extends Controller
         }
         $event->image=json_encode($data);
 
-
         if ($thumbnail_img = $request->file('thumbnail_img')) {
             $thumb_image_path = public_path('uploads/events/' . $event->thumbnail_img);
             
@@ -135,6 +141,7 @@ class EventController extends Controller
         }else{
             unset($event->thumbnail_img);
         }
+
 
         $event->save();
         return redirect()->route('events.index')->with('message','event updated successfully');   

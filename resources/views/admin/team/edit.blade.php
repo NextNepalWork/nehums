@@ -12,6 +12,8 @@
                             <a href="{{route('teams.index')}}" class="btn btn-success btn-sm float-right">View Team Member</a>
                         </div>
                         <div class="card-body">
+                            @include('admin.includes.message')
+
                             <form action="{{route('teams.update',$team->id)}}" method="post" enctype="multipart/form-data">
                                 @csrf
                                 @method('PATCH')

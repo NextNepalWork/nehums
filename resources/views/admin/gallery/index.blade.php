@@ -12,9 +12,9 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                    @can('role-create')
+                    
                         <a href="{{route('gallery.create')}}" class="btn btn-success btn-sm float-right">Add</a>
-                    @endcan
+                   
                 </div>
                 <div class="card-body p-0">
                     <div class="tab-base">

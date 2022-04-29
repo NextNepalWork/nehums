@@ -37,6 +37,11 @@ class SliderController extends Controller
     public function store(Request $request)
     {
         $slider = new Slider();
+        $request->validate([
+            'status' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
+
         $slider->link=$request->link;
         $slider->status=$request->status;
         $slider->title=$request->title;
@@ -84,6 +89,10 @@ class SliderController extends Controller
     public function update(Request $request, $id)
     {
         $slider = Slider::findOrFail($id);
+        $request->validate([
+            'status' => 'required',
+            'image' => 'required|mimes:jpg,png,jpeg,gif'
+        ]);
         $slider->link=$request->link;
         $slider->status=$request->status;
         $slider->title=$request->title;

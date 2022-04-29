@@ -38,6 +38,10 @@ class PageController extends Controller
     public function store(Request $request)
     {
         $page = new Page;
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required'
+        ]);
         $page->title = $request->title;
         if (Page::where('slug', preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug)))->first() == null) {
             $page->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug));
@@ -100,6 +104,10 @@ class PageController extends Controller
     {
         
         $page = Page::findOrFail($id);
+        $request->validate([
+            'title' => 'required',
+            'slug' => 'required'
+        ]);
         $page->title = $request->title;
         if (Page::where('slug', preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug)))->first() != null) {
             $page->slug = preg_replace('/[^A-Za-z0-9\-]/', '', str_replace(' ', '-', $request->slug));
