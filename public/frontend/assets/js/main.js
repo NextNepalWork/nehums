@@ -39,7 +39,7 @@ $(document).ready(() => {
     });
 });
 
-// lightGallery(document.getElementById("lightgallery"), {
-//     speed: 500,
-//     plugins: [lgVideo]
-// });
+lightGallery(document.getElementById("lightgallery"), {
+    speed: 500,
+    plugins: [lgVideo],
+});

@@ -25,7 +25,7 @@ class FrontendController extends Controller
         $sliders=Slider::where('status',1)->get();
         $steps=Step::latest()->limit(3)->get();
         $banner=Banner::first();
-        $events=Event::orderBy('created_at','desc')->get();
+        $events=Event::latest()->limit(2)->get();
         $programs=Program::orderBy('created_at','desc')->where('status',1)->limit(3)->get();
 
         return view('frontend.index',compact('setting','sliders','steps','banner','events','programs'));
