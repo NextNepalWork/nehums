@@ -19,18 +19,18 @@
                                 @csrf
                                 @method('PATCH')
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name">Title</label> <span class="text-danger"> * </span>
                                             <input type="text" class="form-control" name="title" value="{{old('title',$program->title)}}">
                                         </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    {{-- <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="slug">Slug</label><span class="text-danger"> * </span>
                                             <input type="text" class="form-control" name="slug" value="{{old('slug',$program->slug)}}">
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div> 
 
                                 <div class="row">

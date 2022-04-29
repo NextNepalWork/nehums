@@ -38,13 +38,13 @@ class ProgramController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'slug'=>'required|unique:programs,slug,'.$id,
-            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+            'slug'=>'unique:programs,slug,',
+            'image' => 'required|mimes:jpg,png,jpeg,gif'
         ]);
 
         $program=new Program();
         $program->title=$request->title;
-        $program->slug=$request->slug;
+        $program->slug=str_replace(' ','-',$request->title);
         $program->description=$request->description;
         $program->status=$request->status;
         
@@ -101,13 +101,13 @@ class ProgramController extends Controller
 
         $request->validate([
             'title' => 'required',
-            'slug'=>'required|unique:programs,slug,'.$id,
-            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
+            'slug'=>'unique:programs,slug,'.$id,
+            'image' => 'nullable|mimes:jpg,png,jpeg,gif'
         ]);
 
         $program = Program::findOrFail($id);
         $program->title=$request->title;
-        $program->slug=$request->slug;
+        $program->slug=str_replace(' ','-',$request->title);
         $program->description=$request->description;
         $program->status=$request->status;
 

@@ -39,12 +39,15 @@ class EventController extends Controller
         $event = new Event();
         $request->validate([
             'title' => 'required',
+            // 'slug'=>'unique:events,slug',
             'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
         ]);
         $event->title=$request->title;
         $event->description=$request->description;
         $event->date=$request->date;
         $event->location=$request->location;
+        // $event->slug=str_replace(' ','-',$request->title);
+
 
 
         if ($request->hasFile('thumbnail_img')) {
@@ -105,9 +108,11 @@ class EventController extends Controller
         $event = Event::findOrFail($id);
         $request->validate([
             'title' => 'required',
+            // 'slug'=>'unique:events,slug,'.$id,
             'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
         ]);
         $event->title=$request->title;
+        // $event->slug=str_replace(' ','-',$request->title);
         $event->description=$request->description;
         $event->date=$request->date;
         $event->location=$request->location;

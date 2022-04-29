@@ -13,7 +13,7 @@
                                 <th> # </th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Type</th>
+                                <th>Phone</th>
                                 <th>Subject</th>
                                 <th>Action</th>
                             </tr>
@@ -28,21 +28,16 @@
                                     
                                     <td>{{$message->email}}</td>
                                     <td>
-                                        @if ($message->type=='contact')
-                                            Contact
-                                        @elseif($message->type=='job')
-                                            Job Vacancy
-                                        @elseif($message->type=='volunteer')
-                                            Volunteer Internship
-                                        @endif
+                                        {{$message->phone}}
                                     </td>
                                     <td>{{$message->subject}}</td>
                                     
-                                    <form action="{{route('messages.destroy',$message->id)}}" method="post">
+                                    <form action="{{Route::is('messages.index') ? route('messages.destroy',$message->id) : Route::is('job.index') ? route('job.destroy',$message->id) : route('volunteer.destroy',$message->id)}}" method="post">
                                         @csrf
                                         @method('delete')
                                         <td class="project-actions">
-                                            <a class="btn btn-primary btn-sm" href="{{route('messages.show',$message->id)}}">
+                                            <a class="btn btn-primary btn-sm" href="{{Route::is('messages.index') ? route('messages.show',$message->id) : Route::is('job.index') ? route('job.show',$message->id) : route('volunteer.show',$message->id)}}
+                                            ">
                                                 <i class="fas fa-folder">
                                                 </i>
                                                 View

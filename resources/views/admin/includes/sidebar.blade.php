@@ -241,20 +241,6 @@
                 {{-- <i class="fas fa-angle-right right"></i> --}}
               </p>
             </a>
-            {{-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('blogs.index')}}" class="nav-link {{Route::is('blogs.index') ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>All Blogs</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{route('blogs.create')}}" class="nav-link {{Route::is('blogs.create') ? 'active' : ''}}">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Add Blog</p>
-                </a>
-              </li>
-            </ul> --}}
           </li>
           
           {{-- <li class="nav-item">
@@ -318,7 +304,6 @@
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Newsletter
-                {{-- <i class="fas fa-angle-right right"></i> --}}
               </p>
             </a>
           </li>
@@ -326,7 +311,23 @@
             <a href="{{route('messages.index')}}" class="nav-link {{ Route::is('messages.index','messages.show') ? 'active' : '' }}">
               <i class="nav-icon fas fa-book"></i>
               <p>
-                Messages
+                Contact
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('job.index')}}" class="nav-link {{ Route::is('job.index','job.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Job Vacancy
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('volunteer.index')}}" class="nav-link {{ Route::is('volunteer.index','volunteer.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Volunteer Internship
               </p>
             </a>
           </li>

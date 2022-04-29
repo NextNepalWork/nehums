@@ -38,12 +38,12 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
-            'slug'=>'required|unique:blogs,slug,',
+            'slug'=>'unique:blogs,slug,',
         ]);
 
         $blog=new Blog();
         $blog->title=$request->title;
-        $blog->slug=$request->slug;
+        $blog->slug=str_replace(' ','-',$request->title);
         $blog->description=$request->description;
         $blog->status=$request->status;
         
@@ -99,12 +99,12 @@ class BlogController extends Controller
     {
         $validated = $request->validate([
             'title' => 'required',
-            'slug'=>'required|unique:blogs,slug,'.$id,
+            'slug'=>'unique:blogs,slug,'.$id,
         ]);
 
         $blog = Blog::findOrFail($id);
         $blog->title=$request->title;
-        $blog->slug=$request->slug;
+        $blog->slug=str_replace(' ','-',$request->title);
         $blog->description=$request->description;
         $blog->status=$request->status;
 

@@ -98,9 +98,18 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
 	Route::post('/newsletter/send', [NewsletterController::class,'send'])->name('newsletters.send');
 
 
-    Route::get('/message', [MessageController::class,'index'])->name('messages.index');
-	Route::get('/message/{id}', [MessageController::class,'show'])->name('messages.show');
-	Route::delete('/message/{id}', [MessageController::class,'delete'])->name('messages.destroy'); 
+    Route::get('/contact', [MessageController::class,'index'])->name('messages.index');
+	Route::get('/contact/{id}', [MessageController::class,'show'])->name('messages.show');
+	Route::delete('/contact/{id}', [MessageController::class,'delete'])->name('messages.destroy'); 
+
+    Route::get('/jobs', [MessageController::class,'index'])->name('job.index');
+	Route::get('/jobs/{id}', [MessageController::class,'show'])->name('job.show');
+	Route::delete('/jobs/{id}', [MessageController::class,'delete'])->name('job.destroy');
+
+    Route::get('/volunteer', [MessageController::class,'index'])->name('volunteer.index');
+	Route::get('/volunteer/{id}', [MessageController::class,'show'])->name('volunteer.show');
+	Route::delete('/volunteer/{id}', [MessageController::class,'delete'])->name('volunteer.destroy');
+
 	Route::resource('/opportunity', OpportunityController::class);
 	Route::resource('/programs', ProgramController::class);
     
