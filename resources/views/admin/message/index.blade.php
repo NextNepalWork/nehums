@@ -13,7 +13,7 @@
                                 <th> # </th>
                                 <th>Name</th>
                                 <th>Email</th>
-                                <th>Phone</th>
+                                <th>Type</th>
                                 <th>Subject</th>
                                 <th>Action</th>
                             </tr>
@@ -27,7 +27,15 @@
                                     <td> {{$message->name}} </td>
                                     
                                     <td>{{$message->email}}</td>
-                                    <td>{{$message->phone}}</td>
+                                    <td>
+                                        @if ($message->type=='contact')
+                                            Contact
+                                        @elseif($message->type=='job')
+                                            Job Vacancy
+                                        @elseif($message->type=='volunteer')
+                                            Volunteer Internship
+                                        @endif
+                                    </td>
                                     <td>{{$message->subject}}</td>
                                     
                                     <form action="{{route('messages.destroy',$message->id)}}" method="post">
