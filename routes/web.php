@@ -72,7 +72,7 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
     Route::get('/banners/update-status',[BannerController::class,'update_status'])->name('banner.update_status');
     Route::get('/sliders/update-status',[SliderController::class,'update_status'])->name('slider.update_status');
 
-
+   
     
     
     
@@ -135,3 +135,7 @@ Route::get('/job-detail/{id}',[FrontendController::class,'job_detail'])->name('j
 Route::get('/volunteer',[FrontendController::class,'volunteer'])->name('volunteer');
 Route::get('/donate-us',[FrontendController::class,'donate'])->name('donate');
 Route::post('/subscribers', [NewsletterController::class,'subscriber'])->name('subscriber');
+
+
+Route::get('/media-coverages',[FrontendController::class,'mediaCoverages'])->name('media-coverages');
+Route::get('/media-coverages/{id}',[FrontendController::class,'mediaCoveragesDetail'])->name('media-coverage.detail');
