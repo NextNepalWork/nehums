@@ -43,7 +43,21 @@ class FrontendController extends Controller
         }
         return view('frontend.about',compact('setting','about'));
     }
+    
+    public function mediaCoverages(){
+        $setting=SiteSetting::first();
+        $programs = Media::orderBy('created_at','desc')->get();
+        return view('frontend.media-coverages',compact('setting','programs'));
+    }
 
+    public function mediaCoveragesDetail($id){
+        $setting=SiteSetting::first();
+        $program = Media::findOrFail($id);
+        $media_coverages = Media::orderBy('created_at','desc')->where('id','!=',$id)->limit(5)->get();
+        $photos = Photo::inRandomOrder()->limit(8)->get();
+        
+        return view('frontend.media-detail',compact('setting','program','media_coverages','photos'));
+    }
     public function program(){
         $setting=SiteSetting::first();
         $programs = Program::orderBy('created_at','desc')->where('status',1)->get();
@@ -54,7 +68,7 @@ class FrontendController extends Controller
         $setting=SiteSetting::first();
         $program = Program::findOrFail($id);
         $media_coverages = Media::orderBy('created_at','desc')->limit(5)->get();
-        $photos = Photo::latest()->limit(8)->get();
+        $photos = Photo::inRandomOrder()->limit(8)->get();
         
         return view('frontend.program-detail',compact('setting','program','media_coverages','photos'));
     }
@@ -70,7 +84,7 @@ class FrontendController extends Controller
         $setting=SiteSetting::first();
         $event = Event::findOrFail($id);
         $media_coverages = Media::orderBy('created_at','desc')->limit(5)->get();
-        $photos = Photo::latest()->limit(8)->get();
+        $photos = Photo::inRandomOrder()->limit(8)->get();
         
         return view('frontend.event-detail',compact('setting','event','media_coverages','photos'));
     }

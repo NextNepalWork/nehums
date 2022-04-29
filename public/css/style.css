@@ -264,8 +264,8 @@ sup {
     left: 0;
 }
 
-.navbar-menus ul li a.active {
-    color: var(--main-color) !important;
+.navbar-menus ul li .dropdown-item.active {
+    color: #ffffff!important;
 }
 
 .navigator a {

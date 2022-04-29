@@ -57,6 +57,7 @@
                     <div class="dropdown-menu position-absolute p-0 border-0">
                         <a class="dropdown-item {{ Route::is('programs') ? 'active' : '' }}" href="{{route('programs')}}">Programs</a>
                         <a class="dropdown-item {{ Route::is('events') ? 'active' : '' }}" href="{{route('events')}}">Events</a>
+                        <a class="dropdown-item {{ Route::is('media') ? 'active' : '' }}" href="{{route('media-coverages')}}">Media Coverages</a>
                     </div>
                 </li>
                 <li class="nav-item mx-3">

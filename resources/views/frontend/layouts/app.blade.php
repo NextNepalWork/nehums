@@ -28,17 +28,18 @@
     <!-- Lightbox Gallery -->
     <link rel="stylesheet" href="{{asset('frontend/assets/lighbox-gallery-1.6.14/lightbox1.6.14.css')}}">
     <!-- Lightbox Gallery Ends -->
-    <link rel="stylesheet" href="{{asset('frontend/assets/css/style.css')}}">
-    <link rel="stylesheet" href="{{asset('frontend/assets/css/responsive.css')}}">
+    <link rel="stylesheet" href="{{asset('css/style.css')}}">
+    <style>
+        .dropdown-menu .active{
+            background-color:var(--main-color) !important;
+            /* color: #ffffff!important; */
+        }
+    </style>
+    <link rel="stylesheet" href="{{asset('frontend/css/responsive.css')}}">
     <!-- Custom Links Ends -->
     <link rel="stylesheet" type="text/css" 
     href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 
-    <style>
-        .dropdown-menu .active{
-            background-color:var(--main-color) !important;
-        }
-    </style>
 </head>
 
 <body onload="myFunction()">
