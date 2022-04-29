@@ -55,7 +55,7 @@
                                         <p class="text-uppercase mb-1">{{$media_coverage->date}}</p>
                                     </div>
                                     <div class="post-title">
-                                        <a href="event-details.html">
+                                        <a href="{{route('media-coverage.detail',$media_coverage->id)}}">
                                             <h6 class="">{{$media_coverage->title}}</h6>
                                         </a>
                                     </div>

@@ -6,8 +6,10 @@
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="{{route('dashboard')}}" class="brand-link">
-      @if (!empty($setting))
+      @if (!empty($setting->logo))
         <img src="{{asset('admin/image/'.$setting->logo)}}" alt="{{$setting->title}}" class="brand-image img-circle elevation-3" style="opacity: .8">
+      @endif
+      @if (!empty($setting->title))
         <span class="brand-text font-weight-light">{{$setting->title}}</span>
       @endif
     </a>

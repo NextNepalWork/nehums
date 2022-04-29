@@ -40,7 +40,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required',
             // 'slug'=>'unique:events,slug',
-            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+            'thumbnail_img' => 'required|image'
         ]);
         $event->title=$request->title;
         $event->description=$request->description;
@@ -109,7 +109,7 @@ class EventController extends Controller
         $request->validate([
             'title' => 'required',
             // 'slug'=>'unique:events,slug,'.$id,
-            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
+            'thumbnail_img' => 'nullable|image'
         ]);
         $event->title=$request->title;
         // $event->slug=str_replace(' ','-',$request->title);

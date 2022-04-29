@@ -35,7 +35,7 @@
                 
                                 <div class="panel mt-2">
                                     
-                                    <div class="panel-body d-flex">
+                                    <div class="panel-body row">
                                         @php
                                             $photos=\App\Models\Photo::all();
                                         @endphp

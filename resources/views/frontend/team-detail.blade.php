@@ -48,9 +48,9 @@
                                     {{-- <li><strong>Email:</strong><span> example@example.com</span></li> --}}
                                 </ul>
                                 <ul class="team-social-list list-inline mt-2">
-                                    <li class="list-inline-item"><a href="{{$team->facebook}}" class=""><i class="fa fa-twitter"
+                                    <li class="list-inline-item"><a href="{{$team->twitter}}" class=""><i class="fa fa-twitter"
                                                 aria-hidden="true"></i></a></li>
-                                    <li class="list-inline-item"><a href="{{$team->twitter}}" class=""><i class="fa fa-facebook"
+                                    <li class="list-inline-item"><a href="{{$team->facebook}}" class=""><i class="fa fa-facebook"
                                                 aria-hidden="true"></i></a></li>
                                     <li class="list-inline-item"><a href="{{$team->instagram}}" class=""><i class="fa fa-instagram"
                                                 aria-hidden="true"></i></a></li>

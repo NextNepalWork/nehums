@@ -41,7 +41,7 @@ class MediaController extends Controller
         $request->validate([
             'title' => 'required',
             // 'slug'=>'unique:media,slug,',
-            'thumbnail_img' => 'required|mimes:jpg,png,jpeg,gif'
+            'thumbnail_img' => 'required|image'
         ]);
         $media->title=$request->title;
         $media->description=$request->description;
@@ -111,7 +111,7 @@ class MediaController extends Controller
         $request->validate([
             'title' => 'required',
             // 'slug'=>'unique:media,slug,'.$id,
-            'thumbnail_img' => 'nullable|mimes:jpg,png,jpeg,gif'
+            'thumbnail_img' => 'nullable|image'
         ]);
         $media->title=$request->title;
         // $media->slug=str_replace(' ','-',$request->title);

@@ -2141,16 +2141,6 @@ table .cart-image {
     transition: all 0.3s ease 0s;
 }
 
-#parallax-newsletter {
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: top;
-    background-repeat: no-repeat;
-    min-height: 70vh;
-    max-height: 70vh;
-    background-image: url(../images/banner/banner.jpg);
-}
-
 #parallax-newsletter .subscribe-wrapper .subscribe-form input::placeholder {
     color: white;
 }
