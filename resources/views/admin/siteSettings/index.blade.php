@@ -70,6 +70,12 @@
                                         <input type="text" class="form-control" name="branch" value="{{old('branch',$setting->branch)}}">
                                     </div>
                                     <div class="form-group col-md-6">
+                                        <label>Esewa Number</label>
+                                        <input type="number" class="form-control" name="esewa_num" value="{{old('esewa_num',$setting->esewa_num)}}">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-6">
                                         <label for="Footer">Footer Text</label>
                                         <textarea name="footer" class="form-control">{{old('footer',$setting->footer)}}</textarea>
                                     </div>

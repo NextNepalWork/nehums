@@ -120,6 +120,8 @@ class SiteSettingsController extends Controller
         $setting->bank = $request['bank'];
         $setting->account_no = $request['account_no'];
         $setting->branch = $request['branch'];
+        $setting->esewa_num = $request['esewa_num'];
+
 
 
         $setting->update();

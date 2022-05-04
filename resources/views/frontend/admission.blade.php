@@ -31,7 +31,12 @@
                                 data-parent="#accordion">
                                 <div class="card-body">
                                     {!! $admission->description !!}
+                                    <div class="btn-wrapper">
+                                        <a href="" class="effect anchor-btn" data-toggle="modal" data-target=".jobapply-modal">Apply
+                                            Now</a>
+                                    </div>
                                 </div>
+
                             </div>
                         </div>
                     @endforeach

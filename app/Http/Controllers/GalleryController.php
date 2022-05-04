@@ -6,6 +6,7 @@ use App\Models\Gallery;
 use App\Models\Photo;
 use App\Models\Video;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
 
 class GalleryController extends Controller
 {
@@ -16,7 +17,13 @@ class GalleryController extends Controller
      */
     public function index()
     {
-        return view('admin.gallery.index');
+        if (Route::is('photo.index')) {
+            $gallery=Photo::first();
+        } elseif(Route::is('video.index')) {
+            $gallery=Video::first();
+        }
+
+        return view('admin.gallery.index',compact('gallery'));
     }
 
     /**
@@ -35,90 +42,105 @@ class GalleryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        $gallery = new Gallery();
-        $data=[];
-        if ($request->hasFile('photos')) {
-            foreach($request->file('photos') as $key => $file)
-            {
-                $name = time(). $key. '.'.$file->extension();
-                $file->move(public_path().'/uploads/gallery', $name);  
-                array_push($data,$name);  
-            }
-        }
-        // dd($data);
-        $gallery->photos=json_encode($data);
-        if($request->hasFile('video')){
-            $name = time().'.'.$request->video->extension();
-            $request->video->move(public_path().'/uploads/gallery', $name);
-            $gallery->videos = $name;
-        }
-
-        $gallery->save();
-        return redirect()->route('gallery.index')->with('message','Gallery added successfully');
-    }
+    
 
 
     public function upload_photo(Request $request)
     {
-        $gallery = new Photo();
+        $gallery=Photo::first();
+        if(empty($gallery)){
+            $gallery = new Photo();
+            $data=[];
+        }else{
+            $data = json_decode($gallery->photos);
+        }
         $request->validate([
-            'photos' => 'required|image',
+            'photos' => 'required',
         ]);
         if ($request->hasFile('photos')) {
-            $name = time().'.'.$request->photos->extension();
-            $request->photos->move(public_path().'/uploads/gallery/photos', $name); 
-            $gallery->photos=$name;  
+            foreach($request->file('photos') as $key => $file)
+            {
+                $name = time(). $key. '.'.$file->extension();
+                $file->move(public_path().'/uploads/gallery/photos', $name);  
+                array_push($data,$name);  
+            }
         }
-        
-
+        $gallery->photos=json_encode($data);
         $gallery->save();
-        return redirect()->route('gallery.index')->with('message','Photo added successfully');
+        return redirect()->route('photo.index')->with('message','Photos added successfully');
     }
 
     public function upload_video(Request $request)
     {
-        $gallery = new Video();
-        $request->validate([
-            'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
-        ]);
-        if ($request->hasFile('video')) {
-            $name = time().'.'.$request->video->extension();
-            $request->video->move(public_path().'/uploads/gallery/videos', $name); 
-            $gallery->videos=$name;  
-        }
+        // $gallery = new Video();
+        // $request->validate([
+        //     'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
+        // ]);
+        // if ($request->hasFile('video')) {
+        //     $name = time().'.'.$request->video->extension();
+        //     $request->video->move(public_path().'/uploads/gallery/videos', $name); 
+        //     $gallery->videos=$name;  
+        // }
         
 
-        $gallery->save();
-        return redirect()->route('gallery.index')->with('message','Video added successfully');
+        // $gallery->save();
+        // return redirect()->route('gallery.index')->with('message','Video added successfully');
         
+        $gallery=Video::first();
+        if(empty($gallery)){
+            $gallery = new Video();
+            $data=[];
+        }else{
+            $data = json_decode($gallery->videos);
+        }
+        $request->validate([
+            'videos' => 'required',
+        ]);
+        if ($request->hasFile('videos')) {
+            foreach($request->file('videos') as $key => $file)
+            {
+                $name = time(). $key. '.'.$file->extension();
+                $file->move(public_path().'/uploads/gallery/videos', $name);  
+                array_push($data,$name);  
+            }
+        }
+        $gallery->videos=json_encode($data);
+        $gallery->save();
+        return redirect()->route('video.index')->with('message','videos added successfully');
 
     }
 
-    public function delete_photo($id)
+    public function delete_photo($img)
     {
-        $photo=Photo::findOrFail($id);
-        $image_path = public_path('uploads/gallery/photos/' . $photo->photos);    
+        $photo=Photo::first();
+        $a=json_decode($photo->photos);
+        
+        
+        $image_path = public_path('uploads/gallery/photos/' .$a[$img]);    
         if(file_exists($image_path)){
             unlink($image_path);
-        }else{
-            
         }
-        $photo->delete();
+        unset($a[$img]);
+        $photo->photos=json_encode($a);
+        $photo->save();
+        
         return back()->with('message','Photo deleted successfully');
     }
     public function delete_video($id)
     {
-        $video=Video::findOrFail($id);
-        $image_path = public_path('uploads/gallery/videos/' . $video->videos);    
+        $video=Video::first();
+        $a=json_decode($video->videos);
+        
+        
+        $image_path = public_path('uploads/gallery/videos/' .$a[$id]);    
         if(file_exists($image_path)){
             unlink($image_path);
-        }else{
-            
         }
-        $video->delete();
-        return back()->with('message','Video deleted successfully');
+        unset($a[$id]);
+        $video->videos=json_encode($a);
+        $video->save();
+        
+        return back()->with('message','Videos deleted successfully');
     }
 
     /**
