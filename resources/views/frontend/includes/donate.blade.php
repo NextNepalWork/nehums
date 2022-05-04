@@ -19,8 +19,8 @@
                     </li>
                     <li class="font-weight-bold"> {{$setting->branch}}
                     </li>
-                    {{-- <li class="font-weight-bold"> Bank Swift Code : xxx xxx
-                    </li> --}}
+                    <li class="font-weight-bold"> Esewa : {{$setting->esewa_num}}
+                    </li>
                 </ul>
             </div>
         </div>

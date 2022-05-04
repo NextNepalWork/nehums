@@ -16,6 +16,8 @@ class MessageController extends Controller
             $messages=Message::where('type','job')->latest()->get();
         } elseif(Route::is('volunteer.index')){
             $messages=Message::where('type','volunteer')->latest()->get();
+        } elseif(Route::is('admission.index')){
+            $messages=Message::where('type','admission')->latest()->get();
         }
         
         return view('admin.message.index',compact('messages'));

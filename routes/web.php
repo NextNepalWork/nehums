@@ -88,7 +88,12 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
     Route::resource('/steps', StepController::class);
     Route::resource('/medias', MediaController::class);
 	Route::resource('/pages', PageController::class);
-	Route::resource('/gallery', GalleryController::class);
+	// Route::resource('/gallery', GalleryController::class);
+
+    Route::get('gallery/photo',[GalleryController::class,'index'])->name('photo.index');
+    Route::get('gallery/video',[GalleryController::class,'index'])->name('video.index');
+    Route::get('gallery/add-photo',[GalleryController::class,'create'])->name('photo.create');
+    Route::get('gallery/add-video',[GalleryController::class,'create'])->name('video.create');
     Route::post('/gallery/photo',[GalleryController::class,'upload_photo'])->name('upload_photo');
     Route::post('/gallery/video',[GalleryController::class,'upload_video'])->name('upload_video');
     Route::delete('/photo/destroy/{id}', [GalleryController::class,'delete_photo'])->name('delete.photo');
@@ -109,6 +114,10 @@ Route::group(['prefix' => 'dashboard',  'middleware' => 'auth'], function () {
     Route::get('/volunteer', [MessageController::class,'index'])->name('volunteer.index');
 	Route::get('/volunteer/{id}', [MessageController::class,'show'])->name('volunteer.show');
 	Route::delete('/volunteer/{id}', [MessageController::class,'delete'])->name('volunteer.destroy');
+
+    Route::get('/admission', [MessageController::class,'index'])->name('admission.index');
+	Route::get('/admission/{id}', [MessageController::class,'show'])->name('admission.show');
+	Route::delete('/admission/{id}', [MessageController::class,'delete'])->name('admission.destroy');
 
 	Route::resource('/opportunity', OpportunityController::class);
 	Route::resource('/programs', ProgramController::class);

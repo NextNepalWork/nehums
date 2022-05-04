@@ -76,6 +76,7 @@
             </div>
 
             <div class="col-10 mt-5 text-center">
+                @if (!empty($banner))
                 <a href="{{$banner->url}}">
                 @if (!empty($banner->image))
                     @if(file_exists('uploads/banners/'.$banner->image))
@@ -85,6 +86,7 @@
                     @endif
                 @else
                     <img src="{{asset('frontend/assets/images/banner/1 (1).jpg')}}" class="img-fluid">
+                @endif
                 @endif
                 </a>
             </div>

@@ -283,13 +283,27 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{route('gallery.index')}}" class="nav-link {{ Route::is('gallery.index','gallery.create','gallery.edit','gallery.show') ? 'active' : '' }}">
+            <a href="#" class="nav-link {{ Route::is('photo.index','photo.create','video.index','video.create') ? 'active' : '' }}">
               <i class="nav-icon far fa-image"></i>
               <p>
                 Gallery
-                {{-- <i class="fas fa-angle-right right"></i> --}}
+                <i class="fas fa-angle-right right"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{route('photo.index')}}" class="nav-link {{ Route::is('photo.index','photo.create') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Photo Gallery</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{route('video.index')}}" class="nav-link {{ Route::is('video.index','video.create') ? 'active' : '' }}">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>Video Gallery</p>
+                </a>
+              </li>
+            </ul>
           </li>
 
           <li class="nav-item">
@@ -314,6 +328,14 @@
               <i class="nav-icon fas fa-book"></i>
               <p>
                 Contact
+              </p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{{route('admission.index')}}" class="nav-link {{ Route::is('admission.index','admission.show') ? 'active' : '' }}">
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                Admission
               </p>
             </a>
           </li>
