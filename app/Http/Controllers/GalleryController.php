@@ -72,26 +72,10 @@ class GalleryController extends Controller
 
     public function upload_video(Request $request)
     {
-        // $gallery=Video::first();
-        // if(empty($gallery)){
-        //     $gallery = new Video();
-        //     $data=[];
-        // }else{
-        //     $data = json_decode($gallery->videos,true);
-        // }
-        // $request->validate([
-        //     'videos' => 'required',
-        // ]);
-        // if ($request->hasFile('videos')) {
-        //     foreach($request->file('videos') as $key => $file)
-        //     {
-        //         $name = time(). $key. '.'.$file->extension();
-        //         $file->move(public_path().'/uploads/gallery/videos', $name);  
-        //         array_push($data,$name);  
-        //     }
-        // }
-        // $gallery->videos=json_encode($data);
         $gallery = new Video();
+        $request->validate([
+            'link' => 'required',
+        ]);
         $gallery->link=$request->link;
         $gallery->title=$request->title;
         $gallery->save();
