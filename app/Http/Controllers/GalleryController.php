@@ -52,7 +52,7 @@ class GalleryController extends Controller
             $gallery = new Photo();
             $data=[];
         }else{
-            $data = json_decode($gallery->photos);
+            $data = json_decode($gallery->photos,true);
         }
         $request->validate([
             'photos' => 'required',
@@ -72,26 +72,12 @@ class GalleryController extends Controller
 
     public function upload_video(Request $request)
     {
-        // $gallery = new Video();
-        // $request->validate([
-        //     'video' => 'required|mimes:mp4,ogx,oga,ogv,ogg,webm'
-        // ]);
-        // if ($request->hasFile('video')) {
-        //     $name = time().'.'.$request->video->extension();
-        //     $request->video->move(public_path().'/uploads/gallery/videos', $name); 
-        //     $gallery->videos=$name;  
-        // }
-        
-
-        // $gallery->save();
-        // return redirect()->route('gallery.index')->with('message','Video added successfully');
-        
         $gallery=Video::first();
         if(empty($gallery)){
             $gallery = new Video();
             $data=[];
         }else{
-            $data = json_decode($gallery->videos);
+            $data = json_decode($gallery->videos,true);
         }
         $request->validate([
             'videos' => 'required',
@@ -113,7 +99,7 @@ class GalleryController extends Controller
     public function delete_photo($img)
     {
         $photo=Photo::first();
-        $a=json_decode($photo->photos);
+        $a=json_decode($photo->photos,true);
         
         
         $image_path = public_path('uploads/gallery/photos/' .$a[$img]);    
@@ -129,7 +115,7 @@ class GalleryController extends Controller
     public function delete_video($id)
     {
         $video=Video::first();
-        $a=json_decode($video->videos);
+        $a=json_decode($video->videos,true);
         
         
         $image_path = public_path('uploads/gallery/videos/' .$a[$id]);    
