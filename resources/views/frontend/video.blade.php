@@ -12,26 +12,16 @@
 <!-- Breadcrumbs Ends -->
 <section id="gallery" class="default-padding">
     <div class="container">
-        <div class="row p-0">
+        <div id="lightgallery" class="row p-0">
             @if (!empty($videos))
-                @foreach (json_decode($videos->videos) as $video)
-                    {{-- <div class="col-xl-3 col-md-6 col-12" data-src="{{asset('uploads/gallery/videos/'.$video)}}">
-                        <a data-src="{{asset('uploads/gallery/videos/'.$video)}}" class="position-relative">
+                @foreach ($videos as $video)
+                    <div class="col-xl-3 col-md-6 col-12" data-src="{{$video->link}}">
+                        <a data-src="{{$video->link}}" class="position-relative">
                             <img class="img-responsive"
-                                src="{{asset('uploads/gallery/videos/'.$video)}}" />
+                                src="http://demo.kevthemes.com/hugs/wp-content/uploads/2016/07/img-blog-3-150x150.jpg" />
                             <div class="video-play-button" href="#">
                                 <span></span>
                             </div>
-                        </a>
-                    </div> --}}
-                    <div class="col-xl-3 col-md-6 col-12">
-                        <a href="{{asset('uploads/gallery/videos/'.$video)}}" class="position-relative" target="_blank">
-                            <video loop autoplay muted style="width: 100%;">
-                                <source src="{{asset('uploads/gallery/videos/'.$video)}}" >
-                            </video>
-                            {{-- <div class="video-play-button" href="#">
-                                <span></span>
-                            </div> --}}
                         </a>
                     </div>
                 @endforeach    

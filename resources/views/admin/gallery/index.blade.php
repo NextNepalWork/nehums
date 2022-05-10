@@ -15,9 +15,10 @@
                     @if (Route::is('photo.index'))
                         <a href="{{route('photo.create')}}" class="btn btn-success btn-sm float-right">Add Photos</a>
                     @elseif(Route::is('video.index'))
-                        <a href="{{route('video.create')}}" class="btn btn-success btn-sm float-right">Add Videos</a>
+                        <button type="button" class="btn btn-success btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
+                            Add Videos
+                        </button>
                     @endif
-                    
                    
                 </div>
                 <div class="card-body p-0">
@@ -52,21 +53,19 @@
                                                 <div class="col-md-4 col-sm-4 col-xs-6">No Photos Found</div>
                                             @endif
                                         @elseif(Route::is('video.index'))
-                                        @if (!empty($gallery->videos))
-                                                @foreach (json_decode($gallery->videos) as $key => $video)
+                                        @if (!empty($gallery))
+                                                @foreach ($gallery as $key => $video)
                                                     <div class="col-md-4 col-sm-4 col-xs-6">
                                                         <div class="img-upload-preview">
-                                                            <a href="{{ asset('uploads/gallery/videos/'.$video) }}" target="_blank">
-                                                            <video loop autoplay muted style="width: 100%;">
-                                                                <source src="{{asset('uploads/gallery/videos/'.$video)}}" >
-                                                            </video>
-                                                            </a>
-                                                            <form action="{{route('delete.video',$key)}}" method="post">
+                                                            <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/{{ explode('=', $video->link)[1] }}"></iframe>
+                                                            
+                                                            <form action="{{route('delete.video',$video->id)}}" method="post">
                                                                 @csrf
                                                                 @method('delete')
                                                                 <button class="btn btn-danger close-btn remove-files" type="submit" title='Delete'><i class="fa fa-times"></i></button>
                                                             </form>
                                                         </div>
+                                                        <span class="font-weight-bold d-flex justify-content-center">{{$video->title}}</span>
                                                     </div>
                                                 @endforeach
                                             @else
@@ -84,6 +83,36 @@
         </div>
     </section>
 </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Video</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <form action="{{route('upload_video')}}" method="post" enctype="multipart/form-data">
+            @csrf
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Title:</label>
+                    <input type="text" name="title" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>URL:</label>
+                    <input type="text" name="link" class="form-control">
+                </div>
+            </div>
+            <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
 @endsection
 
 @section('scripts')
