@@ -91,14 +91,14 @@ class FrontendController extends Controller
 
     public function video_gallery(){
         $setting=SiteSetting::first();
-        $videos = Video::latest()->get();
+        $videos = Video::first();
         
         return view('frontend.video',compact('setting','videos'));
     }
 
     public function photo_gallery(){
         $setting=SiteSetting::first();
-        $photos = Photo::latest()->get();
+        $photos = Photo::first();
         
         return view('frontend.photo',compact('setting','photos'));
     }

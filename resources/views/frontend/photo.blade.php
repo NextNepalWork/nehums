@@ -13,13 +13,13 @@
 <section id="gallery" class="default-padding">
     <div class="container">
         <div id="lightgallery" class="row p-0">
-            @if (count($photos)>0)
-                @foreach ($photos as $photo)
-                    @if (!empty($photo->photos))
-                        @if(file_exists('uploads/gallery/photos/'.$photo->photos))
-                            <div class="col-lg-3 col-md-6" data-src="{{asset('uploads/gallery/photos/'.$photo->photos)}}">
-                                <a href="{{asset('uploads/gallery/photos/'.$photo->photos)}}" target="_blank">
-                                    <img src="{{asset('uploads/gallery/photos/'.$photo->photos)}}" class="img-fluid img-responsive">
+            @if (!empty($photos))
+                @foreach (json_decode($photos->photos) as $photo)
+                    @if (!empty($photo))
+                        @if(file_exists('uploads/gallery/photos/'.$photo))
+                            <div class="col-lg-3 col-md-6" data-src="{{asset('uploads/gallery/photos/'.$photo)}}">
+                                <a href="{{asset('uploads/gallery/photos/'.$photo)}}" target="_blank">
+                                    <img src="{{asset('uploads/gallery/photos/'.$photo)}}" class="img-fluid img-responsive">
                                 </a>
                             </div>
                         @else

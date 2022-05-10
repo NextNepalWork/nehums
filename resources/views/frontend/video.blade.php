@@ -12,16 +12,26 @@
 <!-- Breadcrumbs Ends -->
 <section id="gallery" class="default-padding">
     <div class="container">
-        <div id="lightgallery" class="row p-0">
-            @if (count($videos)>0)
-                @foreach ($videos as $video)
-                    <div class="col-xl-3 col-md-6 col-12" data-src="{{asset('uploads/gallery/videos/'.$video->videos)}}">
-                        <a data-src="{{asset('uploads/gallery/videos/'.$video->videos)}}" class="position-relative">
+        <div class="row p-0">
+            @if (!empty($videos))
+                @foreach (json_decode($videos->videos) as $video)
+                    {{-- <div class="col-xl-3 col-md-6 col-12" data-src="{{asset('uploads/gallery/videos/'.$video)}}">
+                        <a data-src="{{asset('uploads/gallery/videos/'.$video)}}" class="position-relative">
                             <img class="img-responsive"
-                                src="{{asset('uploads/gallery/videos/'.$video->videos)}}" />
+                                src="{{asset('uploads/gallery/videos/'.$video)}}" />
                             <div class="video-play-button" href="#">
                                 <span></span>
                             </div>
+                        </a>
+                    </div> --}}
+                    <div class="col-xl-3 col-md-6 col-12">
+                        <a href="{{asset('uploads/gallery/videos/'.$video)}}" class="position-relative" target="_blank">
+                            <video loop autoplay muted style="width: 100%;">
+                                <source src="{{asset('uploads/gallery/videos/'.$video)}}" >
+                            </video>
+                            {{-- <div class="video-play-button" href="#">
+                                <span></span>
+                            </div> --}}
                         </a>
                     </div>
                 @endforeach    
