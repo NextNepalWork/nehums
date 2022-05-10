@@ -17,9 +17,6 @@
                             @if (Route::is('photo.create'))
                                 <h3 class="card-title">Add Photos</h3>
                                 <a href="{{route('photo.index')}}" class="btn btn-success btn-sm float-right">View Photo Gallery</a>
-                            @elseif(Route::is('video.create'))
-                                <h3 class="card-title">Add Videos</h3>
-                                <a href="{{route('video.index')}}" class="btn btn-success btn-sm float-right">View Video Gallery</a>
                             @endif
                         </div>
                         <div class="card-body pt-0">
@@ -37,18 +34,6 @@
                                                 <button type="submit" class="btn btn-success mt-2">Save</button>
                                             </form>
                                         </div>
-                                    </div>
-                                @elseif(Route::is('video.create'))
-                                    <div class="panel">
-                                        <form action="{{route('upload_video')}}" method="post" enctype="multipart/form-data">
-                                            @csrf
-                                            <div class="row mt-2">
-                                                <div class="col-md-12">
-                                                    <input type="file" name="videos[]" multiple>
-                                                </div>
-                                            </div>
-                                            <button type="submit" class="btn btn-success mt-2">Save</button>
-                                        </form>
                                     </div>
                                 @endif
                         </div> 

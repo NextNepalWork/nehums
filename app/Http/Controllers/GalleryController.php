@@ -20,7 +20,7 @@ class GalleryController extends Controller
         if (Route::is('photo.index')) {
             $gallery=Photo::first();
         } elseif(Route::is('video.index')) {
-            $gallery=Video::first();
+            $gallery=Video::all();
         }
 
         return view('admin.gallery.index',compact('gallery'));
@@ -72,25 +72,28 @@ class GalleryController extends Controller
 
     public function upload_video(Request $request)
     {
-        $gallery=Video::first();
-        if(empty($gallery)){
-            $gallery = new Video();
-            $data=[];
-        }else{
-            $data = json_decode($gallery->videos,true);
-        }
-        $request->validate([
-            'videos' => 'required',
-        ]);
-        if ($request->hasFile('videos')) {
-            foreach($request->file('videos') as $key => $file)
-            {
-                $name = time(). $key. '.'.$file->extension();
-                $file->move(public_path().'/uploads/gallery/videos', $name);  
-                array_push($data,$name);  
-            }
-        }
-        $gallery->videos=json_encode($data);
+        // $gallery=Video::first();
+        // if(empty($gallery)){
+        //     $gallery = new Video();
+        //     $data=[];
+        // }else{
+        //     $data = json_decode($gallery->videos,true);
+        // }
+        // $request->validate([
+        //     'videos' => 'required',
+        // ]);
+        // if ($request->hasFile('videos')) {
+        //     foreach($request->file('videos') as $key => $file)
+        //     {
+        //         $name = time(). $key. '.'.$file->extension();
+        //         $file->move(public_path().'/uploads/gallery/videos', $name);  
+        //         array_push($data,$name);  
+        //     }
+        // }
+        // $gallery->videos=json_encode($data);
+        $gallery = new Video();
+        $gallery->link=$request->link;
+        $gallery->title=$request->title;
         $gallery->save();
         return redirect()->route('video.index')->with('message','videos added successfully');
 
@@ -114,18 +117,8 @@ class GalleryController extends Controller
     }
     public function delete_video($id)
     {
-        $video=Video::first();
-        $a=json_decode($video->videos,true);
-        
-        
-        $image_path = public_path('uploads/gallery/videos/' .$a[$id]);    
-        if(file_exists($image_path)){
-            unlink($image_path);
-        }
-        unset($a[$id]);
-        $video->videos=json_encode($a);
-        $video->save();
-        
+        $video=Video::find($id);
+        $video->delete();
         return back()->with('message','Videos deleted successfully');
     }
 
