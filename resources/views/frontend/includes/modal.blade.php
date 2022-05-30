@@ -155,7 +155,7 @@
         <div class="modal-content p-5">
             <form class="row py-3" method="post" action="{{route('contact_us')}}">
                 @csrf
-                <input type="hidden" name="type" value="{{Route::Is('volunteer') ? ('volunteer' : Route::Is('admission') ? 'admission' : 'job')}}">
+                <input type="hidden" name="type" value="{{Route::Is('volunteer') ? 'volunteer' : (Route::Is('admission') ? 'admission' : 'job')}}">
                 <div class="col-lg-4 col-12 form-group">
                     <input type="text" name="name" class="form-control" placeholder="Your Name"
                         value="" required>
